@@ -46,7 +46,7 @@ body {
 }
 
 .shop-now-button {
-    background: black;
+    background:#3498db;
     color: white;
     min-width: 260px;
 }
@@ -62,7 +62,7 @@ body {
 .btn-black:hover,
 .btn-black:active,
 .btn-black:focus {
-    background: #222;
+    background: black;
     color: white;
 }
 
@@ -73,19 +73,30 @@ body {
 .border-black {
     border: 1px solid black !important;
 }
-
+.bg-blue {
+    background-color: #3498db;
+}
 /* promo-section */
 .promo-section {
     background:  url('/media/homepage1.jpg') no-repeat center center fixed;
     background-size: cover;
+    margin-top: auto;
     height: 100vh;
     width: 100vw;
     margin: 0;
     transition: background-image 0.5s ease-in-out; /* Smooth transition for background change */
 }
 
+/* contact us nav */
+
+.con-us {
+    margin-left: 48px;
+}
 
 
+.top-box{
+    padding-top: 0;
+}
 
 /* -------------------------------- Media Queries */
 
@@ -107,6 +118,6 @@ body {
     }
 
     .header-container {
-        padding-top: 164px;
+        padding-top: 4px;
     }
 }
