@@ -13,16 +13,30 @@
 
     {% block extra_meta %}
     {% endblock %}
+    {% block fvicon %}
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/media/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/media/">
+    <link rel="manifest" href="/site.webmanifest">
+    {%endblock %}
 
     {% block corecss %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
+    <!-- Css-->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
 
     {% block extra_css %}
     {% endblock %}
 
     {% block corejs %}
+    <!-- font awesome kit-->
+    <script src="https://kit.fontawesome.com/57d3df9033.js" crossorigin="anonymous"></script>
+
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
@@ -42,11 +56,11 @@
 
 <body>
     <header class="container-fluid fixed-top">
-        <div class="row">
+        <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center  text-lg-left">
                 <!-- logo -->
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                    <h2 class="logo-font text-black my-0"><strong> <span class="circle">B</span>est</strong>Deals</h2>
+                    <h2 class="logo-font text-blue my-0"><strong> <span class="circle">B</span>est</strong>Deals</h2>
                 </a>
             </div>
             <!-- search bar-->
@@ -74,7 +88,7 @@
                         <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                             <div class="text-center">
-                                <div><i class="fas fa-user fa-lg"></i></div>
+                                <div><i class="fas fa-user fa-lg text-primary"></i></div>
                                 <p class="my-0">My Account</p>
                             </div>
                         </a>
@@ -93,14 +107,15 @@
                     </li>
                     <!-- Shopping bag -->
                     <li class="list-inline-item">
-                        <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="">
+                        <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
+                            href="">
                             <div class="text-center">
-                                <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+                                <div><i class="fa-solid fa-cart-shopping  text-primary"></i></div>
                                 <p class="my-0">
                                     {% if grand_total %}
-                                        ${{ grand_total|floatformat:2 }}
+                                    ${{ grand_total|floatformat:2 }}
                                     {% else %}
-                                        $0.00
+                                    $0.00
                                     {% endif %}
                                 </p>
                             </div>
@@ -124,6 +139,16 @@
 
     {% block postloadjs %}
     {% endblock %}
+    <footer class="footer">
+        <div class="container text-center py-4">
+            <p>&copy; 2025 Best Deals. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+    </footer>
 
 
 </body>
