@@ -98,6 +98,51 @@ body {
     padding-top: 0;
 }
 
+
+.category-section {
+    width: 100%; /* Full width of the viewport */
+    padding: 0 15px; /* Optional: Add padding to the left and right */
+    margin: 0;
+    background-color: #f8f9fa; /* Optional: Add a light background color */
+}
+
+/* Center the category content */
+.category-box {
+    text-align: center; /* Center content inside each box */
+    margin: 0 auto; /* Center the box within the column */
+    max-width: 100%; /* Ensure it spans within the column */
+}
+
+/* Images */
+.category-box img {
+    max-width: 100%; /* Ensure the image is responsive */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Optional: Add rounded corners */
+    transition: transform 0.3s ease; /* Add hover effect */
+}
+
+.category-box img:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Category Titles */
+.category-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px; /* Add space between image and title */
+    color: #333; /* Default text color */
+}
+
+/* Remove link decoration */
+.category-link {
+    text-decoration: none;
+    color: inherit; /* Keep the text color inherited */
+}
+
+.category-link:hover .category-title {
+    color: #007bff; /* Change title color on hover */
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
