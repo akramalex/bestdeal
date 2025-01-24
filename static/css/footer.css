@@ -1,0 +1,42 @@
+/* footer.css */
+
+/* Footer container styles */
+.footer {
+    background-color: #343a40; 
+    color: #3498db; /* Light text */
+    padding: 20px 0; /* Vertical padding */
+    border-top: 1px solid #444; /* Optional: Add a top border */
+}
+
+/* Footer links */
+.footer a {
+    color: #3498db; /* Blue link color */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: white; /* Darker blue on hover */
+}
+
+/* Footer link list */
+.footer-links {
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+    margin: 10px 0 0;
+    display: flex;
+    justify-content: center; /* Center the links horizontally */
+    gap: 20px; /* Space between links */
+}
+
+.footer-links li {
+    display: inline-block;
+}
+
+/* Responsive footer adjustments */
+@media (max-width: 768px) {
+    .footer-links {
+        flex-direction: column; /* Stack links vertically on smaller screens */
+        gap: 10px;
+    }
+}

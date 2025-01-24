@@ -31,6 +31,8 @@
     {% endblock %}
 
     {% block extra_css %}
+    <!-- Footer-specific CSS -->
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     {% endblock %}
 
     {% block corejs %}
@@ -154,7 +156,7 @@
 
     {% block postloadjs %}
     {% endblock %}
-    
+
     {% include 'includes/footer.html' %}
 
 

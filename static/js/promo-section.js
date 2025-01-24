@@ -14,14 +14,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Check if the element exists to avoid errors
     if (promoSection) {
-        // Add a click event listener to the promo section
-        promoSection.addEventListener("click", () => {
+        // Function to change the background image
+        const changeBackground = () => {
             // Increment the index and reset to 0 if it exceeds the array length
             currentBackgroundIndex = (currentBackgroundIndex + 1) % backgrounds.length;
 
             // Change the background image
             promoSection.style.backgroundImage = `url('${backgrounds[currentBackgroundIndex]}')`;
-        });
+        };
+
+        // Change the background every 3 seconds (3000 milliseconds)
+        setInterval(changeBackground, 3000);
+
+        // Optionally, set the initial background
+        promoSection.style.backgroundImage = `url('${backgrounds[currentBackgroundIndex]}')`;
     } else {
         console.error("Promo section not found.");
     }

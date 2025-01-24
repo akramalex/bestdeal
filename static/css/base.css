@@ -98,7 +98,7 @@ body {
     padding-top: 0;
 }
 
-
+  /* container for category on home page */
 .category-section {
     width: 100%; /* Full width of the viewport */
     padding: 0 15px; /* Optional: Add padding to the left and right */
