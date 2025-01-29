@@ -80,7 +80,7 @@ body {
 .promo-section {
     background:  url('/media/homepage1.jpg') no-repeat center center fixed;
     background-size: cover;
-    margin-top: auto;
+    margin-top: 80px;
     height: 100vh;
     width: 100vw;
     margin: 0;
@@ -143,6 +143,12 @@ body {
     color: #007bff; /* Change title color on hover */
 }
 
+/* products html */
+
+.product-container {
+    margin-top: 110px;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
@@ -150,6 +156,10 @@ body {
   .container {
     max-width: 80%;
   }
+  .product-container {
+    margin-top: 110px;
+}
+
 }
 
 /* fixed top navbar only on medium and up */
@@ -161,8 +171,23 @@ body {
         left: 0;
         z-index: 1030;
     }
-
+    
+  
     .header-container {
         padding-top: 4px;
+    }
+
+}
+
+@media (max-width: 992px) {
+    .product-container {
+        margin-top: 50px; /* Adjust margin for medium screens */
+    }
+}
+
+/* Small screens (max-width 436px) */
+@media (max-width: 436px) {
+    .product-container {
+        margin-top: 140px; /* Revert margin for very small screens */
     }
 }
