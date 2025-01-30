@@ -1,0 +1,34 @@
+/* Success Wrapper */
+.success-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 150px); /* Full viewport height minus header height */
+}
+
+/* Success Message */
+.success-message {
+    border-radius: 8px;
+    font-size: 1.2rem;
+    color: #555;
+    padding: 20px;
+    background-color: #d4edda; /* Light green background (Bootstrap alert-success) */
+    border: 1px solid #c3e6cb; /* Border for alert */
+}
+
+/* Success Button */
+.success-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #007bff; /* Blue button */
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.success-btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Subtle hover shadow */
+}
