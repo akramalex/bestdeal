@@ -16,10 +16,10 @@
     <div class="row align-items-center">
         <!-- Product Image -->
         <div class="col-12 col-md-6 col-lg-6 text-center">
-            <div class="image-container my-3 ">
+            <div class="image-container my-3">
                 {% if product.image %}
                 <a href="{{ product.image.url }}" target="_blank">
-                    <img class="img-fluid rounded  product-details-container " src="{{ product.image.url }}" alt="{{ product.name }}">
+                    <img class="img-fluid rounded product-details-container" src="{{ product.image.url }}" alt="{{ product.name }}">
                 </a>
                 {% else %}
                 <a href="">
@@ -87,7 +87,8 @@
         </div>
     </div>
 </div>
-<!-- rated_products-->
+
+<!-- Rated Items Carousel -->
 <div class="container-fluid mt-5">
     <h3 class="text-center">Rated Items You May Like</h3>
     <div class="carousel-wrapper overflow-hidden">
@@ -98,7 +99,7 @@
                     <img src="{{ rated_product.image.url }}" class="card-img-top img-fluid" alt="{{ rated_product.name }}">
                 </a>
                 <div class="card-body text-center">
-                    <h6 class="card-title">{{ rated_product.name }}</h6>
+                    <h6 class="card-title">{{ rated_product.name|truncatechars:20 }}</h6>
                     <p class="card-text">${{ rated_product.price }}</p>
                     <small class="text-muted">
                         <i class="fas fa-star"></i> {{ rated_product.rating }} / 5
@@ -117,7 +118,4 @@
         </div>
     </div>
 </div>
-
-
-
 {% endblock %}

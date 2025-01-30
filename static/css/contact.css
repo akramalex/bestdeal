@@ -1,0 +1,100 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+/* Hero Section */
+.about-hero-section {
+    background-color: #007bff;
+    height: 150px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Contact Us Section */
+.contact-us {
+    background: #ffffff;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 30px;
+}
+
+/* Form Title */
+.contact-us h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333333;
+}
+
+/* Form Styles */
+.contact-us form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.contact-us form .mb-3 {
+    margin-bottom: 1.5rem;
+}
+
+.contact-us form label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #555;
+}
+
+.contact-us form input,
+.contact-us form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 5px;
+    font-size: 1rem;
+    font-family: 'Arial', sans-serif;
+}
+
+.contact-us form textarea {
+    height: 120px;
+    resize: none;
+}
+
+/* Submit Button */
+.contact-us form .btn-signup {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-us form .btn-signup:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-us {
+        margin: 10px;
+    }
+
+    .contact-us h2 {
+        font-size: 1.5rem;
+    }
+
+    .contact-us form .btn-signup {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}

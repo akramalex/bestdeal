@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-sl$v6!57m0y=2mqpa7h5e_i#)$k6luu3&e0n9@h#z%t69h!yyc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-akramalex-bestdeal-op1o6ypwc59.ws.codeinstitute-ide.net']
+ALLOWED_HOSTS = ['8000-akramalex-bestdeal-op1o6ypwc59.ws.codeinstitute-ide.net', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'home',
-    'products'
+    'products',
+    'contact',
 ]
 
 MIDDLEWARE = [

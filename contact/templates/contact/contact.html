@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+
+<div class="about-hero-section"></div>
+
+<div class="container d-flex justify-content-center align-items-center mt-5 contact-us">
+    <div class="col-12 col-md-8 col-lg-6">
+        <h2 class="text-center mb-4">Contact Us</h2>
+        <form method="post" class="mt-4">
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form.name.label_tag }}
+                {{ form.name }}
+            </div>
+            <div class="mb-3">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+            </div>
+            <div class="mb-3">
+                {{ form.message.label_tag }}
+                {{ form.message }}
+            </div>
+            <div class="text-center">
+                <button class="btn btn-signup right mt-1" type="submit">{% trans "Submit" %}</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

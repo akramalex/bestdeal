@@ -1,48 +1,71 @@
+/* Overlay Background */
 .overlay {
-	height: 100%;
-	width: 100%;
-	top: 0;
-	left: 0;
-	position: fixed;
-	background:whitesmoke;
-	z-index: -1;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background: whitesmoke;
+    z-index: -1;
 }
 
-.products-page .logo-font {
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
-
-.products-page .product-container {
-    margin-top: 20px;
-}
-
-
+/* Product Details */
 .product-details-container {
-	margin-top: 130px;
+    margin-top: 130px;
 }
 
+/* Carousel Section */
 .carousel-wrapper {
     width: 100%;
-    position: relative;
-    overflow: hidden; /* Hide overflow to create the scrolling effect */
+    overflow: hidden; /* Hide overflow to create scrolling effect */
     padding: 20px 0;
-    background-color: #f8f9fa; /* Optional background color */
+    background-color: #f8f9fa;
 }
 
 .carousel-items {
     display: flex;
     gap: 20px; /* Space between items */
-    animation: scroll-carousel 60s linear infinite; /* Infinite scrolling */
+    animation: scroll-carousel 60s linear infinite; /* Scrolling animation */
 }
 
+/* Individual Cards */
 .card {
-    flex: 0 0 auto;
-    width: 220px; /* Fixed width for each card */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Ensures uniform height */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    padding: 10px;
 }
 
+.card-title {
+    font-size: 1rem;
+    min-height: 40px; /* Ensure consistent alignment */
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-text {
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.card-img-top {
+    max-height: 150px; /* Restrict image height */
+    object-fit: cover; /* Keep image aspect ratio */
+    margin-bottom: 10px;
+}
+
+.btn {
+    font-size: 0.565rem;
+    font-weight: bold;
+}
+
+/* Scrolling Animation */
 @keyframes scroll-carousel {
     0% {
         transform: translateX(0); /* Start at the beginning */
