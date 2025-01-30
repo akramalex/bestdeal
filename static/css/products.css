@@ -16,3 +16,38 @@
 .products-page .product-container {
     margin-top: 20px;
 }
+
+
+.product-details-container {
+	margin-top: 130px;
+}
+
+.carousel-wrapper {
+    width: 100%;
+    position: relative;
+    overflow: hidden; /* Hide overflow to create the scrolling effect */
+    padding: 20px 0;
+    background-color: #f8f9fa; /* Optional background color */
+}
+
+.carousel-items {
+    display: flex;
+    gap: 20px; /* Space between items */
+    animation: scroll-carousel 60s linear infinite; /* Infinite scrolling */
+}
+
+.card {
+    flex: 0 0 auto;
+    width: 220px; /* Fixed width for each card */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+@keyframes scroll-carousel {
+    0% {
+        transform: translateX(0); /* Start at the beginning */
+    }
+    100% {
+        transform: translateX(-100%); /* Move to the end */
+    }
+}
