@@ -18,13 +18,19 @@ def all_products(request):
 def product_detail(request, product_id):
     """ A view to show individual product details, including rated items """
 
+    # Fetch the product by ID
     product = get_object_or_404(Product, pk=product_id)
-    
-    # Fetch random rated products
-    rated_products = Product.objects.filter(rating__isnull=False).order_by('?')  # Fetch 6 random rated products
 
+    # Fetch related discount tiers
+    discount_tiers = product.discounttier_set.all()  # Fetch all DiscountTier entries related to the product
+
+    # Fetch random rated products (example: 6 random rated products)
+    rated_products = Product.objects.filter(rating__isnull=False).order_by('?')[:20]
+
+    # Add all relevant data to the context
     context = {
         'product': product,
+        'discount_tiers': discount_tiers,  # Pass discount tiers to the template
         'rated_products': rated_products,
     }
 

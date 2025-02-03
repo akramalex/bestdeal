@@ -37,6 +37,7 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     padding: 10px;
+    
 }
 
 .card-title {
@@ -47,7 +48,11 @@
     align-items: center;
     justify-content: center;
 }
-
+.card-custom{
+    min-width: 320px; /* Minimum width of the card */
+    max-width: 370px; /* Maximum width of the card */
+    flex: 0 0 auto;   /* Prevent the card from shrinking or growing */
+}
 .card-text {
     font-size: 1rem;
     text-align: center;
@@ -61,8 +66,12 @@
 }
 
 .pro-bt {
-    font-size: 0.565rem;
+    font-size: 0.8rem;
     font-weight: bold;
+}
+
+.p-4{
+    margin-top: 150px;
 }
 
 /* Scrolling Animation */

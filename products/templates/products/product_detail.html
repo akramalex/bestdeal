@@ -22,7 +22,7 @@
                     <img class="img-fluid rounded product-details-container" src="{{ product.image.url }}" alt="{{ product.name }}">
                 </a>
                 {% else %}
-                <a href="">
+                <a href="#">
                     <img class="img-fluid rounded" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
                 </a>
                 {% endif %}
@@ -30,16 +30,42 @@
         </div>
 
         <!-- Product Information -->
-        <div class="col-12 col-md-6 col-lg-6">
-            <div class="product-details">
-                <h2 class="mb-3">{{ product.name }}</h2>
+        <div class="col-12 col-md-6 col-lg-6 ">
+            <div class="product-details p-4 border rounded shadow-sm">
+                <!-- Product Name -->
+                <h2 class="mb-3 font-weight-bold text-dark">{{ product.name }}</h2>
+
+                <!-- Product Price -->
                 <p class="lead font-weight-bold text-primary mb-3">${{ product.price }}</p>
+
+                <!-- Product Rating -->
                 {% if product.rating %}
-                <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
+                <small class="text-muted d-block mb-3">
+                    <i class="fas fa-star text-warning mr-1"></i>{{ product.rating }} / 5
+                </small>
                 {% else %}
-                <small class="text-muted">No Rating</small>
+                <small class="text-muted d-block mb-3">No Rating</small>
                 {% endif %}
-                <p class="mt-4">{{ product.description }}</p>
+
+                <!-- Product Description -->
+                <p class="mt-4 text-secondary">{{ product.description }}</p>
+
+                <!-- Discount Tier Prices -->
+                <div class="mt-4">
+                    <h4 class="mb-2">Discount Tiers</h4>
+                    <ul class="list-unstyled">
+                        {% for tier in discount_tiers %}
+                        <li class="text-muted">Buy {{ tier.quantity }} or more for ${{ tier.price }} each</li>
+                        {% empty %}
+                        <li class="text-muted">No discount tiers available for this product.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- Add to Cart Button -->
+                <div class="mt-4">
+                    <a href="#" class="btn btn-primary btn-lg btn-block">Add to Cart</a>
+                </div>
             </div>
         </div>
     </div>
@@ -94,7 +120,7 @@
     <div class="carousel-wrapper overflow-hidden">
         <div class="carousel-items d-flex">
             {% for rated_product in rated_products %}
-            <div class="card m-2" style="min-width: 220px; max-width: 220px; flex: 0 0 auto;">
+            <div class="card m-2 card-custom">
                 <a href="{% url 'product_detail' rated_product.id %}">
                     <img src="{{ rated_product.image.url }}" class="card-img-top img-fluid" alt="{{ rated_product.name }}">
                 </a>
@@ -106,10 +132,10 @@
                     </small>
                     <div class="row mt-2">
                         <div class="col-6">
-                            <a href="" class="btn btn-primary btn-sm btn-block">Add to Cart</a>
+                            <a href="#" class="pro-bt btn btn-primary btn-sm btn-block">Add to Cart</a>
                         </div>
                         <div class="col-6">
-                            <a href="{% url 'product_detail' rated_product.id %}" class="btn btn-outline-secondary btn-sm btn-block">Details</a>
+                            <a href="{% url 'product_detail' rated_product.id %}" class="pro-bt btn btn-outline-secondary btn-sm btn-block">Details</a>
                         </div>
                     </div>
                 </div>
