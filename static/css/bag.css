@@ -1,0 +1,61 @@
+/* Success Wrapper (Shop Bag) */
+.shop-bag {
+    margin-top: 5px;
+    padding: 20px;
+}
+
+.bag-suc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    min-height: calc(100vh - 150px); /* Full viewport height minus header height */
+}
+/* Shopping Bag Header */
+.shopping {
+    text-align: left;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #007bff;
+    
+}
+
+/* Left Align Container */
+.bag-left-align {
+    text-align: left !important; /* Force left alignment */
+    margin: 0; /* Remove any default margins */
+    padding: 0 20px; /* Add padding for spacing */
+}
+
+/* Empty Message */
+.lead {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Keep Shopping Button */
+.btn-outline-black {
+    display: inline-flex;
+    align-items: center;
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-outline-black:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    color: white;
+}
+
+.btn-outline-black .icon {
+    margin-right: 5px;
+}

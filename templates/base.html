@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="{% static 'css/products.css' %}">
     <link rel="stylesheet" href="{% static 'css/contact.css' %}">
     <link rel="stylesheet" href="{% static 'css/success.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bag.css' %}">
     {% endblock %}
 
     {% block corejs %}
@@ -143,7 +144,7 @@
 
         <div id="delivery-banner" class="row text-center">
             <div class="col bg-blue text-white">
-                <h4 class="logo-font my-1 text-white">Free delivery on orders over ${{ free_shipping_threshold }}!</h4>
+                <h4 class="logo-font my-1 text-white">Free delivery on orders over ${{ free_delivery_threshold }}!</h4>
             </div>
         </div>
     </header>

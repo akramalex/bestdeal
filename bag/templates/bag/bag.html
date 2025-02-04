@@ -2,25 +2,27 @@
 {% load static %}
 
 {% block page_header %}
-   
 {% endblock %}
 
 {% block content %}
-    <div class="overlay"></div>
-    <div class="success-wrapper">
-        <div class="row">
-            <div class="col">
-                <hr>
-                <h2 class="logo-font mb-4">Shopping Bag</h2>
-                <hr>
-            </div>
+<div class="overlay"></div>
+<div class="bag-suc shop-bag">
+    <!-- Shopping Bag Header -->
+    <div class="row">
+        <div class="col">
+            
+            <h2 class="shopping mb-4">Shopping Bag</h2>
+           
         </div>
+    </div>
 
-        <div class="row">
-            <div class="col">
-                {% if bag_items %}
-                    <div class="table-responsive rounded"></div>
-                {% else %}
+    <!-- Bag Content -->
+    <div class="row">
+        <div class="col"> 
+            {% if bag_items %}
+                <div class="table-responsive rounded"></div>
+            {% else %}
+                <div class="bag-left-align"> <!-- New wrapper for left alignment -->
                     <p class="lead mb-5">Your bag is empty.</p>
                     <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
                         <span class="icon">
@@ -28,8 +30,9 @@
                         </span>
                         <span class="text-uppercase">Keep Shopping</span>
                     </a>
-                {% endif %}
-            </div>
+                </div>
+            {% endif %}
         </div>
     </div>
+</div>
 {% endblock %}
