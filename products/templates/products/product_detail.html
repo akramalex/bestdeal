@@ -19,7 +19,8 @@
             <div class="image-container my-3">
                 {% if product.image %}
                 <a href="{{ product.image.url }}" target="_blank">
-                    <img class="img-fluid rounded product-details-container" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    <img class="img-fluid rounded product-details-container" src="{{ product.image.url }}"
+                        alt="{{ product.name }}">
                 </a>
                 {% else %}
                 <a href="#">
@@ -37,6 +38,13 @@
 
                 <!-- Product Price -->
                 <p class="lead font-weight-bold text-primary mb-3">${{ product.price }}</p>
+                {% if product.category %}
+                <p class="small mt-1 mb-0">
+                    <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}">
+                        <i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name }}
+                    </a>
+                </p>
+                {% endif %}
 
                 <!-- Product Rating -->
                 {% if product.rating %}
@@ -78,7 +86,8 @@
             <!-- Existing Reviews -->
             {% for review in reviews %}
             <div class="review mb-4">
-                <p><strong>{{ review.user.username }}</strong> rated: <i class="fas fa-star text-warning"></i> {{ review.rating }}</p>
+                <p><strong>{{ review.user.username }}</strong> rated: <i class="fas fa-star text-warning"></i> {{
+                    review.rating }}</p>
                 <p>{{ review.comment }}</p>
                 <small class="text-muted">{{ review.created_at|date:"M d, Y" }}</small>
                 <hr>
@@ -122,7 +131,8 @@
             {% for rated_product in rated_products %}
             <div class="card m-2 card-custom">
                 <a href="{% url 'product_detail' rated_product.id %}">
-                    <img src="{{ rated_product.image.url }}" class="card-img-top img-fluid" alt="{{ rated_product.name }}">
+                    <img src="{{ rated_product.image.url }}" class="card-img-top img-fluid"
+                        alt="{{ rated_product.name }}">
                 </a>
                 <div class="card-body text-center">
                     <h6 class="card-title">{{ rated_product.name|truncatechars:20 }}</h6>
@@ -135,7 +145,8 @@
                             <a href="#" class="pro-bt btn btn-primary btn-sm btn-block">Add to Cart</a>
                         </div>
                         <div class="col-6">
-                            <a href="{% url 'product_detail' rated_product.id %}" class="pro-bt btn btn-outline-secondary btn-sm btn-block">Details</a>
+                            <a href="{% url 'product_detail' rated_product.id %}"
+                                class="pro-bt btn btn-outline-secondary btn-sm btn-block">Details</a>
                         </div>
                     </div>
                 </div>

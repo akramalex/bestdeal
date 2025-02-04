@@ -75,6 +75,11 @@
     margin-top: 150px;
 }
 
+a.category-badge > span.badge:hover {
+    background: #007bff !important;
+    color: wheat !important;
+}
+
 /* Scrolling Animation */
 @keyframes scroll-carousel {
     0% {
