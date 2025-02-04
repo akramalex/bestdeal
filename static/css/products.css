@@ -79,6 +79,50 @@ a.category-badge > span.badge:hover {
     background: #007bff !important;
     color: wheat !important;
 }
+.back-to-top {
+    position: fixed; /* Fixes the button to the screen */
+    bottom: 20px;    /* Distance from the bottom of the viewport */
+    right: 20px;     /* Distance from the right of the viewport */
+    width: 60px;     /* Width of the circular button */
+    height: 60px;    /* Height of the circular button */
+    background-color: #007bff; /* Button background color (blue) */
+    border-radius: 50%; /* Makes the button circular */
+    border: 2px solid wheat; /* Border color (wheat) */
+    box-shadow: 0 4px 8px wheat; /* Subtle shadow */
+    display: flex; /* Flexbox for centering the link inside */
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+    z-index: 1000; /* Ensures it's above other elements */
+    cursor: pointer; /* Changes cursor to pointer */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth hover transition */
+}
+
+.back-to-top:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    box-shadow: 0 6px 12px whitesmoke; /* Stronger shadow on hover */
+}
+
+.back-to-top-link {
+    display: flex; /* Flexbox for the icon */
+    justify-content: center; /* Center the icon horizontally */
+    align-items: center; /* Center the icon vertically */
+    width: 100%; /* Makes the link fill the button */
+    height: 100%; /* Makes the link fill the button */
+    text-decoration: none; /* Removes underline from the link */
+}
+
+.back-to-top-link i {
+    font-size: 24px; /* Icon size */
+    color: white; /* Set arrow icon color to white */
+    transition: color 0.3s; /* Smooth transition for hover */
+}
+
+.back-to-top-link:hover i {
+    color: wheat; /* Change arrow color on hover */
+}
+
+
+
 
 /* Scrolling Animation */
 @keyframes scroll-carousel {
