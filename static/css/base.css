@@ -165,6 +165,12 @@ body {
     margin-bottom: 15px;
 }
 
+.btt-link,
+.update-link,
+.remove-item {
+    cursor: pointer;
+}
+
 
 /* -------------------------------- Media Queries */
 
