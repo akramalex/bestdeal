@@ -9,8 +9,8 @@ class DiscountTierInline(admin.TabularInline):
 
 # ProductAdmin with DiscountTier Inline
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('sku', 'name', 'price', 'category', 'rating', 'image' ,'vat_applicable')  # Columns in the list view
-    fields = ('name', 'price', 'category', 'image', 'vat_applicable', 'description')  # Fields in the product form
+    list_display = ('sku', 'name', 'price', 'category', 'rating', 'image' , 'has_sizes','vat_applicable')  # Columns in the list view
+    fields = ('name', 'price', 'category', 'image', 'vat_applicable', 'has_sizes','description')  # Fields in the product form
     inlines = [DiscountTierInline]  # Add DiscountTier inline editing
 
 
