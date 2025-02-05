@@ -122,6 +122,22 @@ a.category-badge > span.badge:hover {
 }
 
 
+.qty-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Makes the button circular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem; /* Adjust icon size */
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Optional: Hover effect */
+.qty-btn:hover {
+    background-color: #0056b3 !important; /* Darker blue */
+}
+
 
 
 
