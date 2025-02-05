@@ -94,7 +94,13 @@
                             </div>
                             <div class="row mt-2">
                                 <div class="col-6">
-                                    <a href="" class="btn btn-primary btn-block ">Add to Cart</a>
+                                    <a href="javascript:void(0);" class="btn btn-primary btn-block" onclick="document.getElementById('addToBagForm').submit();">Add To Bag</a>
+
+                                    <form id="addToBagForm" action="{% url 'add_to_bag' product.id %}" method="POST">
+                                              {% csrf_token %}
+                                              <input type="hidden" name="quantity" value="1">
+                                              <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                    </form>
                                 </div>
                                 <div class="col-6">
                                     <a href="{% url 'product_detail' product.id %}" class="btn btn-outline-secondary btn-block">Details</a>
