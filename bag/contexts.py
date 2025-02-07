@@ -4,28 +4,46 @@ from django.shortcuts import get_object_or_404
 from products.models import Product
 
 def bag_contents(request):
+    """
+    Context processor for shopping bag.
+    Ensures VAT is **only applied** to VAT-applicable products.
+    """
     bag_items = []
-    total = 0
+    total = Decimal('0.00')
     product_count = 0
     bag = request.session.get('bag', {})
 
+    vat_total = Decimal('0.00')  # ✅ Track VAT separately
+
     for item_id, item_data in bag.items():
-        if isinstance(item_data, int):
-            # Single item (no size)
-            product = get_object_or_404(Product, pk=item_id)
-            total += item_data * product.price
-            product_count += item_data
+        product = get_object_or_404(Product, pk=item_id)
+
+        if isinstance(item_data, int):  # ✅ Single item (no size)
+            quantity = item_data
+            line_total = quantity * product.price
+            total += line_total
+            product_count += quantity
+
+            # ✅ Apply VAT only if product has `vat_applicable = True`
+            if product.vat_applicable:
+                vat_total += line_total * Decimal(settings.VAT_PERCENTAGE / 100)
+
             bag_items.append({
                 'item_id': item_id,
-                'quantity': item_data,
+                'quantity': quantity,
                 'product': product,
             })
-        else:
-            # Items with sizes
-            product = get_object_or_404(Product, pk=item_id)
+
+        else:  # ✅ Handle items with sizes
             for size, quantity in item_data['items_by_size'].items():
-                total += quantity * product.price
+                line_total = quantity * product.price
+                total += line_total
                 product_count += quantity
+
+                # ✅ Apply VAT only if `vat_applicable = True`
+                if product.vat_applicable:
+                    vat_total += line_total * Decimal(settings.VAT_PERCENTAGE / 100)
+
                 bag_items.append({
                     'item_id': item_id,
                     'quantity': quantity,
@@ -33,26 +51,22 @@ def bag_contents(request):
                     'size': size,
                 })
 
-    if total < settings.FREE_DELIVERY_THRESHOLD:
+    # ✅ Calculate delivery cost
+    if total > 0 and total < settings.FREE_DELIVERY_THRESHOLD:
         delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
-        free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total
     else:
-        delivery = 0
-        free_delivery_delta = 0
+        delivery = Decimal('0.00')
 
-    # Calculate VAT (assuming a 20% VAT rate)
-    VAT_PERCENTAGE = Decimal('20.0')  # 20%
-    vat = total * VAT_PERCENTAGE / 100
-
-    grand_total = delivery + total + vat
+    # ✅ Grand Total = Order Total + VAT (only for VAT-applicable products) + Delivery
+    grand_total = total + vat_total + delivery
 
     context = {
         'bag_items': bag_items,
         'total': total,
         'product_count': product_count,
+        'vat': vat_total,  # ✅ Only count VAT for applicable products
         'delivery': delivery,
-        'vat': vat,  # Add VAT to the context
-        'free_delivery_delta': free_delivery_delta,
+        'free_delivery_delta': settings.FREE_DELIVERY_THRESHOLD - total,
         'free_delivery_threshold': settings.FREE_DELIVERY_THRESHOLD,
         'grand_total': grand_total,
     }
