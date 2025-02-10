@@ -14,7 +14,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="overlay "></div>
+    <div class="overlay"></div>
     <div class="container min-vh-100">
         <div class="row">
             <div class="col chec-ut">
@@ -28,12 +28,45 @@
             </div>
         </div>
 
-        <!-- Flexbox Row for Equal Heights (Ensuring Layout Consistency) -->
+        <!-- Flexbox Row for Equal Heights (Keeping Layout Consistent) -->
         <div class="row d-flex align-items-stretch">
-            <!-- Order Summary Section -->
-            <div class="col-12 col-lg-6 mb-5 order-lg-last">
+            <!-- Billing Information (Left) -->
+            <div class="col-12 col-lg-6 mb-5">
                 <div class="p-4 border rounded shadow-sm h-100">
-                    <p class="text-muted">Order Summary</p>
+                    <p class="text-muted text-center">Billing Information</p>
+                    
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="mb-1"><strong>Full Name:</strong> {{ order.billing_name }}</p>
+                            <p class="mb-1"><strong>Address:</strong> {{ order.billing_street_address1 }}</p>
+                            {% if order.billing_street_address2 %}
+                            <p class="mb-1"><strong>Address 2:</strong> {{ order.billing_street_address2 }}</p>
+                            {% endif %}
+                            <p class="mb-1"><strong>City:</strong> {{ order.billing_town_or_city }}</p>
+                            <p class="mb-1"><strong>County:</strong> {{ order.billing_county }}</p>
+                            <p class="mb-1"><strong>Postal Code:</strong> {{ order.billing_postcode }}</p>
+                            <p class="mb-1"><strong>Country:</strong> {{ order.billing_country }}</p>
+                            <p class="mb-1"><strong>Phone:</strong> {{ order.billing_phone_number }}</p>
+                        </div>
+                    </div>
+
+                    <p class="text-center mt-3">
+                        <a href="{% url 'products' %}?category=new_arrivals,deals,clearance" 
+                           class="btn btn-black rounded-0 my-4">
+                            <span class="icon mr-2">
+                                <i class="fas fa-gifts"></i>
+                            </span>
+                            <span class="text-uppercase">Check Out the Latest Deals</span>
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Order Summary & Shipping Information (Right) -->
+            <div class="col-12 col-lg-6 mb-5">
+                <div class="p-4 border rounded shadow-sm h-100">
+                    <p class="text-muted text-center">Order Summary</p>
+
                     <div class="row">
                         <div class="col-7 offset-2">
                             <p class="mb-1 mt-0 small text-muted">Item</p>
@@ -42,6 +75,7 @@
                             <p class="mb-1 mt-0 small text-muted">Subtotal</p>
                         </div>
                     </div>
+
                     {% for item in order.lineitems.all %}
                     <div class="row">
                         <div class="col-2 mb-1">
@@ -63,41 +97,45 @@
                         </div>
                     </div>
                     {% endfor %}
+                    
                     <hr class="my-0">
                     <div class="row text-black text-right">
                         <div class="col-7 offset-2">
                             <p class="my-0">Order Total:</p>
                             <p class="my-0">Delivery:</p>
-                            <p class="my-0">Vat:</p>
+                            <p class="my-0">VAT:</p>
                             <p class="my-0"><strong>Grand Total:</strong></p>
                         </div>
                         <div class="col-3">
                             <p class="my-0">${{ order.order_total | floatformat:2 }}</p>
                             <p class="my-0">${{ order.delivery_cost | floatformat:2 }}</p>
                             <p class="my-0">${{ order.vat | floatformat:2 }}</p>
-
                             <p class="my-0"><strong>${{ order.grand_total | floatformat:2 }}</strong></p>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <!-- Shipping Address -->
+                    <p class="text-muted text-center">Shipping Information</p>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="mb-1"><strong>Full Name:</strong> {{ order.full_name }}</p>
+                            <p class="mb-1"><strong>Address:</strong> {{ order.street_address1 }}</p>
+                            {% if order.street_address2 %}
+                            <p class="mb-1"><strong>Address 2:</strong> {{ order.street_address2 }}</p>
+                            {% endif %}
+                            <p class="mb-1"><strong>City:</strong> {{ order.town_or_city }}</p>
+                            <p class="mb-1"><strong>County:</strong> {{ order.county }}</p>
+                            <p class="mb-1"><strong>Postal Code:</strong> {{ order.postcode }}</p>
+                            <p class="mb-1"><strong>Country:</strong> {{ order.country }}</p>
+                            <p class="mb-1"><strong>Phone:</strong> {{ order.phone_number }}</p>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Thank You Section -->
-            <div class="col-12 col-lg-6 mb-5">
-                <div class="p-4 border rounded shadow-sm h-100">
-                    <p class="text-muted text-center">Your order details</p>
-                    <p class="text-black text-center">Thank you for shopping with us!</p>
-                    <p class="text-center">
-                        <a href="{% url 'products' %}?category=new_arrivals,deals,clearance" 
-                           class="btn btn-black rounded-0 my-4">
-                            <span class="icon mr-2">
-                                <i class="fas fa-gifts"></i>
-                            </span>
-                            <span class="text-uppercase">Check Out the Latest Deals</span>
-                        </a>
-                    </p>
-                </div>
-            </div>
         </div>
+
     </div>
 {% endblock %}
