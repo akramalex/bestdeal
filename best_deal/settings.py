@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-sl$v6!57m0y=2mqpa7h5e_i#)$k6luu3&e0n9@h#z%t69h!yyc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-akramalex-bestdeal-op1o6ypwc59.ws.codeinstitute-ide.net', '127.0.0.1','https://127.0.0.1:8000' 'localhost']
+ALLOWED_HOSTS = ['8000-akramalex-bestdeal-op1o6ypwc59.ws.codeinstitute-ide.net', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -196,3 +196,4 @@ VAT_PERCENTAGE = 20.0
 STRIPE_CURRENCY = 'usd'
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
+STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
