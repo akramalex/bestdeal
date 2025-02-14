@@ -34,20 +34,10 @@
                 </div>
             </div>
 
-            <p class="text-center mt-3">
-                <a class="text-info" href="{% url 'account_reset_password' %}">
-                    {% trans "Forgot your password?" %}
-                </a>
-            </p>
+            
         </form>
 
-        {% if SOCIALACCOUNT_ENABLED %}
-            <div class="text-center mt-4">
-                <p>{% trans "Or sign in using:" %}</p>
-                {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-            </div>
-        {% endif %}
-    </div>
+       
 </div>
 
 {% endblock content %}
