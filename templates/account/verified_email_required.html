@@ -1,25 +1,45 @@
 {% extends "account/base_manage.html" %}
+
 {% load i18n %}
 {% load allauth %}
-{% block head_title %}
-    {% trans "Verify Your Email Address" %}
-{% endblock head_title %}
+
+{% block head_title %}{% trans "Verify Your Email Address" %}{% endblock head_title %}
+
 {% block content %}
-    {% element h1 %}
-        {% trans "Verify Your Email Address" %}
-    {% endelement %}
-    {% url 'account_email' as email_url %}
-    {% element p %}
+
+<hr>
+<h2 class="logo-font mb-4 just-ma text-center just-ma">{% trans "Verify Your Email Address" %}</h2>
+<hr>
+
+<div class="container text-center">
+    <p class="text-muted">
         {% blocktrans %}This part of the site requires us to verify that
-you are who you claim to be. For this purpose, we require that you
-verify ownership of your email address. {% endblocktrans %}
-    {% endelement %}
-    {% element p %}
-        {% blocktrans %}We have sent an email to you for
-verification. Please click on the link inside that email. If you do not see the verification email in your main inbox, check your spam folder. Otherwise
-contact us if you do not receive it within a few minutes.{% endblocktrans %}
-    {% endelement %}
-    {% element p %}
+        you are who you claim to be. For this purpose, we require that you
+        verify ownership of your email address.{% endblocktrans %}
+    </p>
+
+    <p class="text-muted">
+        {% blocktrans %}We have sent an email to you for verification. Please click on the link inside that email. If you do not see the verification email in your main inbox, check your spam folder. Otherwise, contact us if you do not receive it within a few minutes.{% endblocktrans %}
+    </p>
+
+    {% url 'account_email' as email_url %}
+    <p class="text-muted">
         {% blocktrans %}<strong>Note:</strong> you can still <a href="{{ email_url }}">change your email address</a>.{% endblocktrans %}
-    {% endelement %}
-{% endblock content %}
+    </p>
+
+    <!-- Buttons Section -->
+    <div class="row mt-3">
+        <div class="col-6">
+            <a class="btn btn-outline-dark w-100 rounded-0 text-uppercase" href="{% url 'home' %}">
+                <i class="fas fa-home"></i> Home
+            </a>
+        </div>
+        <div class="col-6">
+            <a class="btn btn-dark w-100 rounded-0 text-uppercase" href="{% url 'account_login' %}">
+                <i class="fas fa-sign-in-alt"></i> {% trans "Sign In" %}
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,29 +1,40 @@
 {% extends "account/base_entrance.html" %}
 {% load allauth %}
 {% load i18n %}
+
 {% block head_title %}
     {% trans "Confirm Access" %}
 {% endblock head_title %}
-{% block content %}
-    {% element h1 %}
-        {% trans "Confirm Access" %}
-    {% endelement %}
-    {% element p %}
-        {% blocktranslate %}Please reauthenticate to safeguard your account.{% endblocktranslate %}
-    {% endelement %}
-    {% block reauthenticate_content %}{% endblock %}
-    {% if reauthentication_alternatives %}
-        {% element hr %}
-        {% endelement %}
-        {% element h2 %}
-            {% translate "Alternative options" %}
-        {% endelement %}
-        {% element button_group %}
-            {% for alt in reauthentication_alternatives %}
-                {% element button href=alt.url tags="primary,outline" %}
-                    {{ alt.description }}
-                {% endelement %}
-            {% endfor %}
-        {% endelement %}
-    {% endif %}
-{% endblock content %}
+
+{% block inner_content %}
+
+<hr>
+<h2 class="logo-font mb-4 text-center just-ma">{% trans "Confirm Access" %}</h2>
+<hr>
+
+<p class="text-center text-muted">{% blocktranslate %}Please reauthenticate to safeguard your account.{% endblocktranslate %}</p>
+
+{% block reauthenticate_content %}{% endblock %}
+
+{% if reauthentication_alternatives %}
+    <hr>
+    <h4 class="text-center">{% trans "Alternative options" %}</h4>
+    <div class="text-center mt-3">
+        {% for alt in reauthentication_alternatives %}
+            <a href="{{ alt.url }}" class="btn btn-outline-dark w-100 rounded-0 mt-2">
+                {{ alt.description }}
+            </a>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<!-- Buttons for Home Navigation -->
+<div class="row mt-4">
+    <div class="col-6">
+        <a class="btn btn-outline-dark w-100 rounded-0 text-uppercase" href="{% url 'home' %}">
+            <i class="fas fa-home"></i> Home
+        </a>
+    </div>
+</div>
+
+{% endblock %}

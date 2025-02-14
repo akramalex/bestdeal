@@ -24,8 +24,12 @@ body {
     font-family: 'Leckerli One', cursive; /* Apply Leckerli One font */
     font-size: 28px; /* Adjust as needed */
     color: #3498db; /* Default text color */
+    
 }
 
+.just-ma{
+    margin-top: 200px;
+}
 .circle {
     display: inline-block;
     width: 40px; /* Adjust size */
@@ -250,6 +254,9 @@ body {
 }
 
 }
+
+
+
 
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {

@@ -1,14 +1,32 @@
 {% extends "account/base_entrance.html" %}
+
 {% load i18n %}
 {% load allauth %}
-{% block head_title %}
-    {% trans "Verify Your Email Address" %}
-{% endblock head_title %}
+
+{% block head_title %}{% trans "Verify Your Email Address" %}{% endblock head_title %}
+
 {% block content %}
-    {% element h1 %}
-        {% trans "Verify Your Email Address" %}
-    {% endelement %}
-    {% element p %}
-        {% blocktrans %}We have sent an email to you for verification. Follow the link provided to finalize the signup process. If you do not see the verification email in your main inbox, check your spam folder. Please contact us if you do not receive the verification email within a few minutes.{% endblocktrans %}
-    {% endelement %}
-{% endblock content %}
+
+<hr>
+<h2 class="logo-font mb-4 just-ma text-center just-ma">{% trans "Verify Your Email Address" %}</h2>
+<hr>
+
+<p class="text-center text-muted">
+    {% blocktrans %}We have sent an email to you for verification. Follow the link provided to finalize the signup process. If you do not see the verification email in your main inbox, check your spam folder. Please contact us if you do not receive the verification email within a few minutes.{% endblocktrans %}
+</p>
+
+<!-- Buttons Section -->
+<div class="row mt-3 text-center">
+    <div class="col-6">
+        <a class="btn btn-outline-dark w-100 rounded-0 text-uppercase" href="{% url 'home' %}">
+            <i class="fas fa-home"></i> Home
+        </a>
+    </div>
+    <div class="col-6">
+        <a class="btn btn-dark w-100 rounded-0 text-uppercase" href="{% url 'account_login' %}">
+            <i class="fas fa-sign-in-alt"></i> {% trans "Sign In" %}
+        </a>
+    </div>
+</div>
+
+{% endblock %}

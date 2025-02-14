@@ -1,14 +1,24 @@
-{% extends "allauth/layouts/entrance.html" %}
+{% extends "account/base.html" %}
+
 {% load i18n %}
-{% load allauth %}
-{% block head_title %}
-    {% translate "Account Inactive" %}
-{% endblock head_title %}
-{% block content %}
-    {% element h1 %}
-        {% translate "Account Inactive" %}
-    {% endelement %}
-    {% element p %}
-        {% translate "This account is inactive." %}
-    {% endelement %}
-{% endblock content %}
+
+{% block head_title %}{% trans "Account Inactive" %}{% endblock %}
+
+{% block inner_content %}
+
+<hr>
+<h2 class="logo-font mb-4 text-center just-ma">{% trans "Account Inactive" %}</h2>
+<hr>
+
+<p class="text-center">{% trans "This account is inactive." %}</p>
+
+<!-- Buttons for Home Navigation -->
+<div class="row mt-4">
+    <div class="col-6">
+        <a class="btn btn-outline-dark w-100 rounded-0 text-uppercase" href="{% url 'home' %}">
+            <i class="fas fa-home"></i> Home
+        </a>
+    </div>
+</div>
+
+{% endblock %}

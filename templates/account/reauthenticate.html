@@ -1,22 +1,39 @@
 {% extends "account/base_reauthenticate.html" %}
+
 {% load allauth %}
 {% load i18n %}
+
+{% block head_title %}{% trans "Confirm Access" %}{% endblock head_title %}
+
 {% block reauthenticate_content %}
-    {% element p %}
-        {% blocktranslate %}Enter your password:{% endblocktranslate %}
-    {% endelement %}
-    {% url 'account_reauthenticate' as action_url %}
-    {% element form form=form method="post" action=action_url %}
-        {% slot body %}
-            {% csrf_token %}
-            {% element fields form=form unlabeled=True %}
-            {% endelement %}
-            {{ redirect_field }}
-        {% endslot %}
-        {% slot actions %}
-            {% element button type="submit" tags="primary,reauthenticate" %}
-                {% trans "Confirm" %}
-            {% endelement %}
-        {% endslot %}
-    {% endelement %}
+
+<hr>
+<h2 class="logo-font mb-4 just-ma text-center just-ma">{% trans "Confirm Access" %}</h2>
+<hr>
+
+<p class="text-center text-muted">
+    {% blocktranslate %}Enter your password to confirm access and proceed.{% endblocktranslate %}
+</p>
+
+<!-- Form Section -->
+<div class="container text-center">
+    <form method="post" action="{% url 'account_reauthenticate' %}" class="text-left">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <div class="row mt-3">
+            <div class="col-6">
+                <a class="btn btn-outline-dark w-100 rounded-0 text-uppercase" href="{% url 'home' %}">
+                    <i class="fas fa-home"></i> Home
+                </a>
+            </div>
+            <div class="col-6">
+                <button class="btn btn-dark w-100 rounded-0 text-uppercase" type="submit">
+                    <i class="fas fa-lock"></i> {% trans "Confirm" %}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
 {% endblock %}

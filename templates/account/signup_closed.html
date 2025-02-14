@@ -1,14 +1,33 @@
 {% extends "account/base_entrance.html" %}
+
 {% load i18n %}
 {% load allauth %}
-{% block head_title %}
-    {% trans "Sign Up Closed" %}
-{% endblock head_title %}
+
+{% block head_title %}{% trans "Sign Up Closed" %}{% endblock head_title %}
+
 {% block content %}
-    {% element h1 %}
-        {% trans "Sign Up Closed" %}
-    {% endelement %}
-    {% element p %}
-        {% trans "We are sorry, but the sign up is currently closed." %}
-    {% endelement %}
-{% endblock content %}
+
+<hr>
+<h2 class="logo-font mb-4 just-ma text-center just-ma">{% trans "Sign Up Closed" %}</h2>
+<hr>
+
+<p class="text-center text-muted">
+    {% trans "We are sorry, but sign-ups are currently closed. Please check back later." %}
+</p>
+
+<!-- Buttons Section -->
+<div class="row mt-3 text-center">
+    <div class="col-6">
+        <a class="btn btn-outline-dark w-100 rounded-0 text-uppercase" href="{% url 'home' %}">
+            <i class="fas fa-home"></i> Home
+        </a>
+    </div>
+    <div class="col-6">
+        <a class="btn btn-dark w-100 rounded-0 text-uppercase" href="{% url 'account_login' %}">
+            <i class="fas fa-sign-in-alt"></i> {% trans "Sign In" %}
+        </a>
+    </div>
+</div>
+
+{% endblock %}
+
