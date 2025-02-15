@@ -150,7 +150,7 @@
 
             <!-- Add Review Form -->
             {% if user.is_authenticated %}
-            <form method="POST" action="{% url 'add_review' product.id %}">
+            <form method="POST" action="">
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="rating">Rating:</label>
