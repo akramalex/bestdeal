@@ -1,5 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import User
 from decimal import Decimal
+
 
 
 class Category(models.Model):
@@ -60,3 +62,47 @@ class DiscountTier(models.Model):
 
     def __str__(self):
         return f"{self.quantity}+ units: ${self.price}"
+    
+
+class Review(models.Model):
+    product = models.ForeignKey("Product", on_delete=models.CASCADE, related_name="reviews")
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)], default=5)  # Rating from 1-5
+    comment = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('product', 'user')  # Ensures one review per product per user
+
+    def __str__(self):
+        return f"Review by {self.user.username} - {self.product.name}"
+    
+
+def update_product_rating(product):
+    """
+    Recalculates and updates the product's rating based on all reviews.
+    """
+    print(f"🔄 Updating rating for product: {product.name}")  # Debugging
+
+    reviews = product.reviews.all()
+    if reviews.exists():
+        avg_rating = reviews.aggregate(models.Avg('rating'))['rating__avg']
+        product.rating = round(avg_rating, 2)  # Keep two decimal places
+        print(f"✅ New calculated rating: {product.rating}")  # Debugging
+    else:
+        product.rating = None  # Reset rating if no reviews exist
+        print("❌ No reviews found. Resetting rating.")  # Debugging
+
+    product.save()
+    print("✅ Product rating updated in database.")  # Debugging
+
+    """
+    Recalculates and updates the product's rating based on all reviews.
+    """
+    reviews = product.reviews.all()
+    if reviews.exists():
+        avg_rating = reviews.aggregate(models.Avg('rating'))['rating__avg']
+        product.rating = round(avg_rating, 2)  # Keep two decimal places
+    else:
+        product.rating = None  # Reset rating if no reviews exist
+    product.save()
