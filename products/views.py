@@ -96,22 +96,32 @@ def product_detail(request, product_id):
 # ---------------------- #
 @login_required
 def submit_review(request, product_id):
-    """ Allows users to submit or update a review for a product and updates rating dynamically """
-    
+    """ Allows users to submit or update their review for a product """
+
     product = get_object_or_404(Product, pk=product_id)
 
     if request.method == "POST":
         rating = request.POST.get("rating")
         comment = request.POST.get("comment")
-        review_id = request.POST.get("review_id")
 
-        if review_id:  # If review exists, update it
-            review = get_object_or_404(Review, pk=review_id, user=request.user)
+        # Validate rating
+        if not rating or not rating.isdigit() or int(rating) not in range(1, 6):
+            messages.error(request, "Invalid rating. Please select a rating between 1 and 5.")
+            return redirect('product_detail', product_id=product.id)
+
+        rating = int(rating)
+
+        # ✅ Check if user has already reviewed this product
+        review = Review.objects.filter(product=product, user=request.user).first()
+
+        if review:
+            # ✅ If review exists, update it instead of creating a new one
             review.rating = rating
             review.comment = comment
             review.save()
             messages.success(request, "Your review has been updated.")
-        else:  # Otherwise, create a new review
+        else:
+            # ✅ If no review exists, create a new one
             Review.objects.create(
                 product=product,
                 user=request.user,
@@ -120,13 +130,14 @@ def submit_review(request, product_id):
             )
             messages.success(request, "Thank you! Your review has been submitted.")
 
-        # ✅ Update product rating after review submission
+        # ✅ Update product rating
         update_product_rating(product)
 
         return redirect('product_detail', product_id=product.id)
 
     messages.error(request, "Invalid request.")
     return redirect('product_detail', product_id=product.id)
+
 
 # ---------------------- #
 #  DELETE REVIEW VIEW

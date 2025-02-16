@@ -254,22 +254,5 @@
 {% block postloadjs %}
 {{ block.super }}
 {% include 'products/includes/quantity_input_script.html' %}
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        document.querySelectorAll('.edit-review-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                let reviewId = this.dataset.reviewId;
-                let rating = this.dataset.rating;
-                let comment = this.dataset.comment;
-    
-                document.getElementById("review-id").value = reviewId;
-                document.getElementById("rating").value = rating;
-                document.getElementById("comment").value = comment;
-    
-                // Scroll to form
-                document.getElementById("review-form-container").scrollIntoView({ behavior: "smooth" });
-            });
-        });
-    });
-    </script>
+<script src="{% static 'js/review_script.js' %}"></script>
 {% endblock %}
