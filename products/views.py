@@ -5,7 +5,7 @@ from django.db.models.functions import Lower
 from django.contrib.auth.decorators import login_required
 from profiles.models import Wishlist
 from .models import Product, Category, Review, update_product_rating
-
+from .forms import ProductForm
 # ---------------------- #
 #  ALL PRODUCTS VIEW
 # ---------------------- #
@@ -159,3 +159,14 @@ def delete_review(request, review_id):
 
     messages.success(request, "Your review has been deleted.")
     return redirect('product_detail', product_id=product.id)
+
+
+def add_product(request):
+    """ Add a product to the store """
+    form = ProductForm()
+    template = 'products/add_product.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
