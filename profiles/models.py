@@ -27,7 +27,7 @@ class UserProfile(models.Model):
 
 class Wishlist(models.Model):
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name="wishlist")
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
     added_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
