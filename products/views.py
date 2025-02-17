@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.contrib.auth.decorators import login_required
+from profiles.models import Wishlist
 from .models import Product, Category, Review, update_product_rating
 
 # ---------------------- #
@@ -63,18 +64,21 @@ def all_products(request):
     return render(request, 'products/products.html', context)
 
 # ---------------------- #
-#  PRODUCT DETAIL VIEW
+#  PRODUCT DETAIL VIEW (WITH WISHLIST)
 # ---------------------- #
 def product_detail(request, product_id):
-    """ A view to show individual product details, including reviews """
+    """ A view to show individual product details, including wishlist status """
 
     product = get_object_or_404(Product, pk=product_id)
     discount_tiers = product.discounttier_set.all()
     reviews = Review.objects.filter(product=product).order_by('-created_at')
 
     user_review = None
+    wishlist = []
+
     if request.user.is_authenticated:
         user_review = Review.objects.filter(product=product, user=request.user).first()
+        wishlist = Wishlist.objects.filter(user=request.user.userprofile).values_list('product', flat=True)
 
     rated_products = Product.objects.filter(
         category=product.category,
@@ -87,12 +91,13 @@ def product_detail(request, product_id):
         'reviews': reviews,
         'user_review': user_review,
         'rated_products': rated_products,
+        'wishlist': wishlist,  # ✅ Pass wishlist data to the template
     }
 
     return render(request, 'products/product_detail.html', context)
 
 # ---------------------- #
-#  SUBMIT (ADD/EDIT) REVIEW
+#  ADD OR UPDATE REVIEW
 # ---------------------- #
 @login_required
 def submit_review(request, product_id):
@@ -138,9 +143,8 @@ def submit_review(request, product_id):
     messages.error(request, "Invalid request.")
     return redirect('product_detail', product_id=product.id)
 
-
 # ---------------------- #
-#  DELETE REVIEW VIEW
+#  DELETE REVIEW
 # ---------------------- #
 @login_required
 def delete_review(request, review_id):

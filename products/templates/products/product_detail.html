@@ -54,15 +54,25 @@
                 {% else %}
                 <small class="text-muted d-block mb-3">No Rating</small>
                 {% endif %}
-                      <!-- Wishlist Heart Icon -->
+                
+                <!-- Wishlist Heart Icon -->
                 {% if user.is_authenticated %}
-                        {% if product in wishlist %}
-                            <i class="fas fa-heart text-danger" title="In Wishlist"></i>  <!-- Filled Heart (Already in Wishlist) -->
-                        {% else %}
-                            <i class="far fa-heart text-muted" title="Add to Wishlist"></i>  <!-- Empty Heart (Not in Wishlist) -->
-                        {% endif %}
+                {% if product.id in wishlist %}
+                    <a href="{% url 'remove_from_wishlist' product.id %}" 
+                       class="btn btn-danger wishlist-btn" 
+                       data-product-id="{{ product.id }}"
+                       data-url="{% url 'remove_from_wishlist' product.id %}">
+                        <i class="fas fa-heart"></i> Remove from Wishlist
+                    </a>
                 {% else %}
-                        <i class="far fa-heart text-muted" title="Log in to use Wishlist"></i>
+                    <a href="{% url 'add_to_wishlist' product.id %}" class="btn btn-outline-danger">
+                        <i class="far fa-heart"></i> Add to Wishlist
+                    </a>
+                {% endif %}
+                {% else %}
+                    <a href="{% url 'account_login' %}" class="btn btn-secondary">
+                        <i class="far fa-heart"></i> Log in to use Wishlist
+                    </a>
                 {% endif %}
 
                 <!-- Product Description -->
@@ -133,7 +143,7 @@
                             <input type="submit" class="btn btn-outline-black rounded-0 mt-5" value="Add to Bag">
                         </div>
                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                        {% endwith%}
+                        {% endwith %}
                     </div>
                 </form>
             </div>
