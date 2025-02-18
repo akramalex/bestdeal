@@ -1,12 +1,21 @@
 document.addEventListener("DOMContentLoaded", function () {
+    console.log("✅ JavaScript Loaded!");
+
     const quantityInput = document.querySelector(".qty_input"); // Quantity input field
     const priceElement = document.querySelector(".lead.font-weight-bold.text-primary"); // Displayed price
-    const addToBagForm = document.querySelector(".form"); // The form used to add to cart
+    const addToBagForm = document.querySelector(".form"); // Form for adding to the cart
+    let incrementButton = document.querySelector(".increment-qty"); // + Button
+    let decrementButton = document.querySelector(".decrement-qty"); // - Button
 
-    // Extract the base price from the product details
+    if (!quantityInput || !priceElement || !incrementButton || !decrementButton) {
+        console.warn("⚠️ Missing quantity input or buttons!");
+        return;
+    }
+
+    console.log("✅ Elements found, script running!");
+
     let basePrice = parseFloat(priceElement.textContent.replace("$", "").trim());
 
-    // Get discount tiers dynamically from the page
     let discountTiers = [];
     document.querySelectorAll(".text-muted").forEach((element) => {
         let match = element.textContent.match(/Buy (\d+) or more for \$(\d+\.\d+)/);
@@ -18,22 +27,21 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Function to update price dynamically
+    discountTiers.sort((a, b) => a.quantity - b.quantity);
+
     function updatePrice() {
-        let quantity = parseInt(quantityInput.value) || 1; // Get current quantity
-        let unitPrice = basePrice; // Default price per unit
+        let quantity = parseInt(quantityInput.value) || 1;
+        let unitPrice = basePrice;
 
-        // Apply discount tiers if applicable
-        discountTiers.forEach((tier) => {
-            if (quantity >= tier.quantity) {
-                unitPrice = tier.price; // Update price per unit
+        for (let i = discountTiers.length - 1; i >= 0; i--) {
+            if (quantity >= discountTiers[i].quantity) {
+                unitPrice = discountTiers[i].price;
+                break;
             }
-        });
+        }
 
-        // Update the displayed price on the product page
         priceElement.textContent = `$${unitPrice.toFixed(2)}`;
 
-        // Create a hidden input to send the updated price to the cart
         let priceInput = document.getElementById("updated_price");
         if (!priceInput) {
             priceInput = document.createElement("input");
@@ -42,9 +50,42 @@ document.addEventListener("DOMContentLoaded", function () {
             priceInput.id = "updated_price";
             addToBagForm.appendChild(priceInput);
         }
-        priceInput.value = unitPrice; // Store the new unit price in the form
+        priceInput.value = unitPrice;
+
+        // ✅ Disable the `-` button only when quantity is 1
+        decrementButton.disabled = quantity <= 1;
     }
 
-    // Listen for changes in quantity input
+    function changeQuantity(change) {
+        let currentQuantity = parseInt(quantityInput.value) || 1;
+        let newQuantity = currentQuantity + change;
+
+        if (newQuantity >= 1) {
+            quantityInput.value = newQuantity;
+            updatePrice();
+        }
+    }
+
+    // ✅ Fix: Remove old event listeners before adding new ones
+    incrementButton.replaceWith(incrementButton.cloneNode(true));
+    decrementButton.replaceWith(decrementButton.cloneNode(true));
+
+    // Re-select buttons after replacement
+    incrementButton = document.querySelector(".increment-qty");
+    decrementButton = document.querySelector(".decrement-qty");
+
+    incrementButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        changeQuantity(1);
+    });
+
+    decrementButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        changeQuantity(-1);
+    });
+
     quantityInput.addEventListener("input", updatePrice);
+
+    // ✅ Ensure correct button state on page load
+    updatePrice();
 });
