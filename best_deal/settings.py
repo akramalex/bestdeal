@@ -31,8 +31,7 @@ SECRET_KEY = 'django-insecure-sl$v6!57m0y=2mqpa7h5e_i#)$k6luu3&e0n9@h#z%t69h!yyc
 DEBUG = True
 
 ALLOWED_HOSTS = ['8000-akramalex-bestdeal-op1o6ypwc59.ws.codeinstitute-ide.net', 
-                 '127.0.0.1', 'localhost',
-                 'bestdeals-9ab4570971bc.herokuapp.com']
+                 '127.0.0.1', 'localhost','bestdeals-9ab4570971bc.herokuapp.com']
 
 
 # Application definition
