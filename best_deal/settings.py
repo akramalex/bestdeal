@@ -11,11 +11,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
-if os.path.exists('env.py'):
-    import env
-
-
 import dj_database_url
+if os.path.isfile('env.py'):
+    import env
 
 from pathlib import Path
 
@@ -30,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['8000-akramalex-bestdeal-op1o6ypwc59.ws.codeinstitute-ide.net', 
                  '127.0.0.1', 'localhost','bestdeals-9ab4570971bc.herokuapp.com']
