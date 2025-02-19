@@ -9,7 +9,9 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+
 import os
+import dj_database_url
 if os.path.exists('env.py'):
     import env
 
@@ -28,7 +30,9 @@ SECRET_KEY = 'django-insecure-sl$v6!57m0y=2mqpa7h5e_i#)$k6luu3&e0n9@h#z%t69h!yyc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-akramalex-bestdeal-op1o6ypwc59.ws.codeinstitute-ide.net', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['8000-akramalex-bestdeal-op1o6ypwc59.ws.codeinstitute-ide.net', 
+                 '127.0.0.1', 'localhost',
+                 'bestdeals-9ab4570971bc.herokuapp.com']
 
 
 # Application definition
@@ -133,13 +137,21 @@ WSGI_APPLICATION = 'best_deal.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-}
+else: 
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
+DATABASES = {
+     'default': dj_database_url.parse('postgresql://neondb_owner:8WMt5qUEvIYm@ep-fancy-field-a2utw236.eu-central-1.aws.neon.tech/blush_geek_oak_18208')
+ }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
