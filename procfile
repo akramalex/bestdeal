@@ -1,1 +1,1 @@
-web: gunicorn bestdeals.wsgi:application
+web: gunicorn bestdeal.wsgi:application

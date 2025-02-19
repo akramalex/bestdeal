@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['8000-akramalex-bestdeal-op1o6ypwc59.ws.codeinstitute-ide.net', 
-                 '127.0.0.1', 'localhost','bestdeals-9ab4570971bc.herokuapp.com']
+                 '127.0.0.1', 'localhost','bestdeal-64124e15271c.herokuapp.com/']
 
 
 # Application definition
