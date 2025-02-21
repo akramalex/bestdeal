@@ -1,10 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Array of background image URLs
+    // ✅ Correct S3 URL
+    const mediaBaseUrl = "https://best-deal0.s3.eu-north-1.amazonaws.com/media/";
+
+    // ✅ Array of background image URLs
     const backgrounds = [
-        "/media/homepage1.jpg",
-        "/media/homepage2.jpg",
-        "/media/homepage3.jpg",
-        "/media/homepage4.jpg"
+        `${mediaBaseUrl}homepage1.jpg`,
+        `${mediaBaseUrl}homepage2.jpg`,
+        `${mediaBaseUrl}homepage3.jpg`,
+        `${mediaBaseUrl}homepage4.jpg`
     ];
 
     let currentBackgroundIndex = 0; // Start with the first background
@@ -12,22 +15,25 @@ document.addEventListener("DOMContentLoaded", () => {
     // Get the promo section element
     const promoSection = document.querySelector(".promo-section");
 
-    // Check if the element exists to avoid errors
+    // ✅ Ensure promo section exists before running the script
     if (promoSection) {
         // Function to change the background image
         const changeBackground = () => {
-            // Increment the index and reset to 0 if it exceeds the array length
             currentBackgroundIndex = (currentBackgroundIndex + 1) % backgrounds.length;
-
-            // Change the background image
             promoSection.style.backgroundImage = `url('${backgrounds[currentBackgroundIndex]}')`;
+            promoSection.style.backgroundSize = "cover"; // ✅ Ensures the image fills the section
+            promoSection.style.backgroundPosition = "center"; // ✅ Centers the background
+            promoSection.style.backgroundRepeat = "no-repeat"; // ✅ Prevents repeating the image
         };
 
         // Change the background every 3 seconds (3000 milliseconds)
         setInterval(changeBackground, 3000);
 
-        // Optionally, set the initial background
+        // ✅ Set the initial background
         promoSection.style.backgroundImage = `url('${backgrounds[currentBackgroundIndex]}')`;
+        promoSection.style.backgroundSize = "cover";
+        promoSection.style.backgroundPosition = "center";
+        promoSection.style.backgroundRepeat = "no-repeat";
     } else {
         console.error("Promo section not found.");
     }
