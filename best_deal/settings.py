@@ -128,6 +128,7 @@ LOGIN_REDIRECT_URL = '/'
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-akramalex-bestdeal-op1o6ypwc59.ws.codeinstitute-ide.net',
+    'https://bestdeal-64124e15271c.herokuapp.com'
 ]
 
 
@@ -212,7 +213,7 @@ if 'USE_AWS' in os.environ:
 }
 
     MEDIAFILES_LOCATION = 'media'
-    
+
     # Override static and media URLs in production
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
