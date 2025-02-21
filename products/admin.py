@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Category, Review  # ❌ Removed DiscountTier
+from .models import Product, Category, Review 
 
 # ProductAdmin (Removed DiscountTier Inline)
 class ProductAdmin(admin.ModelAdmin):
