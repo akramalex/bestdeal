@@ -8,7 +8,7 @@
     {% block meta %}
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     {% endblock %}
 
     {% block extra_meta %}{% endblock %}
@@ -125,14 +125,15 @@
                 {% include 'includes/mobile-top-header.html' %}
                 {% include 'includes/main-nav.html' %}
             </nav>
+            <div id="delivery-banner" class=" text-center">
+                <div class="col bg-blue text-white">
+                    <h4 class="logo-font my-1 text-white">Free delivery on orders over ${{ free_delivery_threshold }}!</h4>
+                </div>
+            </div>
         </div>
 
         <!-- FREE DELIVERY BANNER -->
-        <div id="delivery-banner" class="row text-center">
-            <div class="col bg-blue text-white">
-                <h4 class="logo-font my-1 text-white">Free delivery on orders over ${{ free_delivery_threshold }}!</h4>
-            </div>
-        </div>
+        
     </header>
 
     <!-- MESSAGES (TOASTS) -->

@@ -130,6 +130,7 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 
+
 WSGI_APPLICATION = 'best_deal.wsgi.application'
 
 
