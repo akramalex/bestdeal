@@ -152,6 +152,8 @@ body {
 
 .product-container {
     margin-top: 110px;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 
@@ -165,7 +167,7 @@ body {
 }
 
 .card-text {
-    font-size: 0.9rem;
+    font-size: 0.5rem;
     color: #666;
     margin-bottom: 15px;
 }
@@ -175,6 +177,13 @@ body {
 .remove-item {
     cursor: pointer;
 }
+
+.display-4{
+    font-size: 2.5rem ;
+    color: #17a2b8;
+    ;
+}
+
 
 /* ------------------------------- bootstrap toasts */
 
@@ -283,7 +292,25 @@ body {
     background-color: #3498db; /* Ensure background color fills */
     text-align: center;
 }
+button-container {
+    display: flex;
+    gap: 10px; /* Adds space between buttons */
+    align-items: center;
+}
 
+/* Ensure buttons have consistent size */
+.choose-size-btn {
+    width: 140px; /* Fixed width for consistency */
+    height: 40px; /* Fixed height */
+    font-size: 16px; /* Consistent font size */
+    padding: 10px 12px; /* Padding for better appearance */
+    text-align: center;
+    white-space: nowrap; /* Prevents text wrapping */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 6px;
+}
 
 
 
@@ -333,7 +360,7 @@ body {
     }
 
     .display-4.logo-font.text-black {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
 
     .nav-link {
@@ -378,6 +405,16 @@ body {
    
 }
 
+@media (max-width: 768px) {
+    .button-container {
+        flex-wrap: nowrap; /* Ensures buttons stay in one row */
+    }
+    .choose-size-btn {
+        width: 100%;
+        max-width: 140px;
+        margin-right: 5px;
+    }
+}
 /* Small screens (max-width 436px) */
 @media (max-width: 436px) {
   
