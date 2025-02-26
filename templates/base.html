@@ -1,5 +1,4 @@
 {% load static %}
-
 <!doctype html>
 <html lang="en">
 
@@ -27,7 +26,7 @@
     {% block corecss %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
@@ -69,7 +68,7 @@
 
 {% block facebook_meta %}
 <!-- Meta Tags for Facebook and SEO -->
-<meta name="description" content="Shop affordable clothing, bedding, and home essentials at Best Deals. Free shipping on orders over $50.">
+<meta property="og:description" content="Find the best deals on clothing, bedding, furniture, and home essentials. Affordable prices, free shipping. Shop now at Best Deals.">
 <meta name="keywords" content="affordable clothing, bedding, furniture, home essentials, fashion, online shopping, best deals">
 <meta name="author" content="Best Deals E-commerce">
 {% endblock %}
