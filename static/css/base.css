@@ -379,16 +379,16 @@ button-container {
     #delivery-banner h4 {
         font-size: .9rem;
     }
-
-    .btn.btn-outline-black.rounded-0,
-    .btn.btn-black.rounded-0 {
-        padding: .375rem .375rem;
+    .bag-btn {
+        display: inline;
+        margin-left: 3px;
     }
+ 
 
     .btn.btn-outline-black.rounded-0.btn-lg,
     .btn.btn-black.rounded-0.btn-lg {
         padding: .375rem .375rem;
-        font-size: .75rem;
+        font-size: .62rem;
     }
 
     .increment-qty, .decrement-qty {
@@ -408,11 +408,20 @@ button-container {
 @media (max-width: 768px) {
     .button-container {
         flex-wrap: nowrap; /* Ensures buttons stay in one row */
+        
     }
     .choose-size-btn {
         width: 100%;
         max-width: 140px;
         margin-right: 5px;
+    }
+
+    .logo-font{
+        font-size: 15px;
+    }
+
+    .dropdown-menu {
+        font-size: 0.8rem;
     }
 }
 /* Small screens (max-width 436px) */
