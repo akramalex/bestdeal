@@ -8,7 +8,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: left;
     min-height: calc(100vh - 150px); /* Full viewport height minus header height */
 }
 /* Shopping Bag Header */
