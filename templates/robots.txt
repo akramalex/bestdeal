@@ -4,4 +4,4 @@ Disallow: /shoppingcart/
 Disallow: /profile/
 Disallow: /summernote/
 Disallow: /admin/
-Sitemap: https://bestdeal-64124e15271c.herokuapp.com/sitemap.mxl
+Sitemap: https://bestdeal-64124e15271c.herokuapp.com/sitemap.xml
