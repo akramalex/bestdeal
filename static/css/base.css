@@ -417,11 +417,11 @@ button-container {
     }
 
     .logo-font{
-        font-size: 15px;
+        font-size: 12px;
     }
 
     .dropdown-menu {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
     }
 }
 /* Small screens (max-width 436px) */
