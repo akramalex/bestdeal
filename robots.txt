@@ -1,6 +1,6 @@
 User-agent: *
 Disallow: /accounts/
-Disallow: /shoppingcart/
+Disallow: /bag/
 Disallow: /profile/
 Disallow: /summernote/
 Disallow: /admin/

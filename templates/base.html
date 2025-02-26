@@ -9,6 +9,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Shop affordable clothing, bedding, and home essentials at Best Deals. Free shipping on orders over $50.">
+    <meta name="keywords" content="affordable clothing, bedding, furniture, home essentials, fashion, online shopping, best deals">
+    <meta name="author" content="Best Deals E-commerce">
+
     {% endblock %}
 
     {% block extra_meta %}{% endblock %}
@@ -51,7 +56,23 @@
 
     {% block extra_js %}{% endblock %}
 
-    <title>BestDeals {% block extra_title %}{% endblock %}</title>
+    <title>BestDeals  - Affordable Clothing and Home Goods {% block extra_title %}{% endblock %}</title>
+
+    {% block og_meta %}
+<!-- Open Graph Meta Tags for Facebook -->
+<meta property="og:title" content="Best Deals - Affordable Clothing and Home Goods">
+<meta property="og:description" content="Find the best deals on clothing, bedding, furniture, and home essentials. Affordable prices, free shipping. Shop now at Best Deals.">
+<meta property="og:image" content="{% block og_image %}/media/logo.jpg{% endblock %}">
+<meta property="og:url" content="{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}">
+<meta property="og:type" content="website">
+{% endblock %}
+
+{% block facebook_meta %}
+<!-- Meta Tags for Facebook and SEO -->
+<meta name="description" content="Shop affordable clothing, bedding, and home essentials at Best Deals. Free shipping on orders over $50.">
+<meta name="keywords" content="affordable clothing, bedding, furniture, home essentials, fashion, online shopping, best deals">
+<meta name="author" content="Best Deals E-commerce">
+{% endblock %}
 </head>
 
 <body class="d-flex flex-column min-vh-100">
