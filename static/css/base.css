@@ -21,7 +21,7 @@ body {
  /* logo */
 
  .logo-font {
-    font-family: 'Leckerli One', cursive; /* Apply Leckerli One font */
+    font-family: 'Leckerli'; /* Apply Leckerli One font */
     font-size: 28px; /* Adjust as needed */
     color: #3498db; /* Default text color */
     
@@ -417,7 +417,7 @@ button-container {
     }
 
     .logo-font{
-        font-size: 12px;
+        font-size: 18px;
     }
 
     .dropdown-menu {

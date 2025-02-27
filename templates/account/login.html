@@ -14,17 +14,54 @@
     <div class="col-12 col-md-8 col-lg-6 mx-auto">
         <p class="text-muted text-center">
             {% trans "Don't have an account?" %}
-            <a href="{{ signup_url }}" class="text-info">{% trans "Sign up here" %}</a>.
+            <a href="{% url 'account_signup' %}" class="text-info">{% trans "Sign up here" %}</a>.
         </p>
 
         <form method="post" action="{% url 'account_login' %}">
             {% csrf_token %}
-            {{ form|crispy }}
+
+            {% if form.errors %}
+                <div class="alert alert-danger">
+                    {% for field, errors in form.errors.items %}
+                        {% for error in errors %}
+                            <strong>{% if field != '__all__' %}{{ field.label|title }}:{% endif %}</strong> {{ error }}<br>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <div id="div_id_login" class="form-group">
+                <label for="id_login" class="requiredField">
+                    {% trans "Login" %}<span class="asteriskField">*</span>
+                </label>
+                <div>
+                    <input type="text" name="login" placeholder="Username or email" autocomplete="email" class="textinput textInput form-control" required id="id_login">
+                </div>
+            </div>
+
+            <div id="div_id_password" class="form-group">
+                <label for="id_password" class="requiredField">
+                    {% trans "Password" %}<span class="asteriskField">*</span>
+                </label>
+                <div>
+                    <input type="password" name="password" placeholder="Password" autocomplete="current-password" class="textinput textInput form-control" required  id="id_password">
+                    <small id="hint_id_password" class="form-text text-muted"><a href="{% url 'account_reset_password' %}">{% trans "Forgot your password?" %}</a></small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div id="div_id_remember" class="form-check">
+                    <input type="checkbox" name="remember" class="checkboxinput form-check-input" id="id_remember">
+                    <label for="id_remember" class="form-check-label">
+                        {% trans "Remember Me" %}
+                    </label>
+                </div>
+            </div>
 
             <div class="row mt-3">
                 <div class="col-6">
                     <a class="btn btn-outline-dark w-100 rounded-0 text-uppercase" href="{% url 'home' %}">
-                        <i class="fas fa-home"></i> Home
+                        <i class="fas fa-home"></i> {% trans "Home" %}
                     </a>
                 </div>
                 <div class="col-6">
@@ -33,11 +70,7 @@
                     </button>
                 </div>
             </div>
-
-            
         </form>
-
-       
+    </div>
 </div>
-
 {% endblock content %}
