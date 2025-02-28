@@ -6,12 +6,14 @@ from django.contrib.auth.decorators import login_required
 from profiles.models import Wishlist
 from .models import Product, Category, Review, update_product_rating
 from .forms import ProductForm
+
 # ---------------------- #
 #  ALL PRODUCTS VIEW
 # ---------------------- #
+
+
 def all_products(request):
     """ A view to show all products, including sorting and search queries """
-
     products = Product.objects.all()
     query = None
     categories = None
@@ -25,8 +27,8 @@ def all_products(request):
             if sortkey == 'name':
                 sortkey = 'lower_name'
                 products = products.annotate(lower_name=Lower('name'))
-                if sortkey == 'category':
-                    sortkey = 'category__name'
+            if sortkey == 'category':
+                sortkey = 'category__name'
 
             if 'direction' in request.GET:
                 direction = request.GET['direction']
@@ -42,14 +44,23 @@ def all_products(request):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "You didn't enter any search criteria!")
+                messages.error(
+                    request,
+                    "You didn't enter any search criteria!"
+                )
                 return redirect(reverse('products'))
 
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = (
+                Q(name__icontains=query) |
+                Q(description__icontains=query)
+            )
             products = products.filter(queries)
 
             if not products.exists():
-                messages.warning(request, f"No products found for '{query}'.")
+                messages.warning(
+                    request,
+                    f"No products found for '{query}'."
+                )
                 return redirect(reverse('products'))
 
     current_sorting = f'{sort}_{direction}'
@@ -66,9 +77,10 @@ def all_products(request):
 # ---------------------- #
 #  PRODUCT DETAIL VIEW (WITH WISHLIST)
 # ---------------------- #
-def product_detail(request, product_id):
-    """ A view to show individual product details, including wishlist status """
 
+
+def product_detail(request, product_id):
+    """ A view to show individual product details, including wishlist"""
     product = get_object_or_404(Product, pk=product_id)
     discount_tiers = product.discounttier_set.all()
     reviews = Review.objects.filter(product=product).order_by('-created_at')
@@ -77,8 +89,13 @@ def product_detail(request, product_id):
     wishlist = []
 
     if request.user.is_authenticated:
-        user_review = Review.objects.filter(product=product, user=request.user).first()
-        wishlist = Wishlist.objects.filter(user=request.user.userprofile).values_list('product', flat=True)
+        user_review = Review.objects.filter(
+            product=product,
+            user=request.user
+        ).first()
+        wishlist = Wishlist.objects.filter(
+            user=request.user.userprofile
+        ).values_list('product', flat=True)
 
     rated_products = Product.objects.filter(
         category=product.category,
@@ -91,7 +108,7 @@ def product_detail(request, product_id):
         'reviews': reviews,
         'user_review': user_review,
         'rated_products': rated_products,
-        'wishlist': wishlist,  # ✅ Pass wishlist data to the template
+        'wishlist': wishlist,  # Pass wishlist data to the template
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -99,10 +116,11 @@ def product_detail(request, product_id):
 # ---------------------- #
 #  ADD OR UPDATE REVIEW
 # ---------------------- #
+
+
 @login_required
 def submit_review(request, product_id):
     """ Allows users to submit or update their review for a product """
-
     product = get_object_or_404(Product, pk=product_id)
 
     if request.method == "POST":
@@ -110,32 +128,42 @@ def submit_review(request, product_id):
         comment = request.POST.get("comment")
 
         # Validate rating
-        if not rating or not rating.isdigit() or int(rating) not in range(1, 6):
-            messages.error(request, "Invalid rating. Please select a rating between 1 and 5.")
+        if not rating or not rating.isdigit() or \
+           int(rating) not in range(1, 6):
+            messages.error(
+                request,
+                "Invalid rating. Please select a rating between 1 and 5."
+            )
             return redirect('product_detail', product_id=product.id)
 
         rating = int(rating)
 
-        # ✅ Check if user has already reviewed this product
-        review = Review.objects.filter(product=product, user=request.user).first()
+        # Check if user has already reviewed this product
+        review = Review.objects.filter(
+            product=product,
+            user=request.user
+        ).first()
 
         if review:
-            # ✅ If review exists, update it instead of creating a new one
+            # If review exists, update it instead of creating a new one
             review.rating = rating
             review.comment = comment
             review.save()
             messages.success(request, "Your review has been updated.")
         else:
-            # ✅ If no review exists, create a new one
+            # If no review exists, create a new one
             Review.objects.create(
                 product=product,
                 user=request.user,
                 rating=rating,
                 comment=comment,
             )
-            messages.success(request, "Thank you! Your review has been submitted.")
+            messages.success(
+                request,
+                "Thank you! Your review has been submitted."
+            )
 
-        # ✅ Update product rating
+        # Update product rating
         update_product_rating(product)
 
         return redirect('product_detail', product_id=product.id)
@@ -146,28 +174,32 @@ def submit_review(request, product_id):
 # ---------------------- #
 #  DELETE REVIEW
 # ---------------------- #
+
+
 @login_required
 def delete_review(request, review_id):
     """ Allows users to delete their own review and updates product rating """
-    
     review = get_object_or_404(Review, pk=review_id, user=request.user)
     product = review.product  # Get the associated product
     review.delete()  # Delete review
 
-    # ✅ Update product rating after review deletion
+    # Update product rating after review deletion
     update_product_rating(product)
 
     messages.success(request, "Your review has been deleted.")
     return redirect('product_detail', product_id=product.id)
 
+# ---------------------- #
+#  ADD PRODUCT
+# ---------------------- #
+
+
 @login_required
 def add_product(request):
     """ Add a product to the store """
-
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
-    
 
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
@@ -176,10 +208,13 @@ def add_product(request):
             messages.success(request, 'Successfully added product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
+            messages.error(
+                request,
+                'Failed to add product. Please ensure the form is valid.'
+            )
     else:
         form = ProductForm()
-        
+
     template = 'products/add_product.html'
     context = {
         'form': form,
@@ -187,13 +222,18 @@ def add_product(request):
 
     return render(request, template, context)
 
+# ---------------------- #
+#  EDIT PRODUCT
+# ---------------------- #
+
+
 @login_required
 def edit_product(request, product_id):
     """ Edit a product in the store """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
-    
+
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES, instance=product)
@@ -202,7 +242,10 @@ def edit_product(request, product_id):
             messages.success(request, 'Successfully updated product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed to update product. Please ensure the form is valid.')
+            messages.error(
+              request,
+              'Failed to update product. Please ensure the form is valid.'
+            )
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')
@@ -215,13 +258,18 @@ def edit_product(request, product_id):
 
     return render(request, template, context)
 
+# ---------------------- #
+#  DELETE PRODUCT
+# ---------------------- #
+
+
 @login_required
 def delete_product(request, product_id):
     """ Delete a product from the store """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
-    
+
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
     messages.success(request, 'Product deleted!')
