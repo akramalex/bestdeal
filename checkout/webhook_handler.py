@@ -11,6 +11,7 @@ import stripe
 import json
 import time
 
+
 class StripeWH_Handler:
     """Handle Stripe webhooks"""
 
@@ -81,10 +82,18 @@ class StripeWH_Handler:
                     profile.get_full_name = shipping_details.name
                     profile.default_phone_number = shipping_details.phone
                     profile.default_country = shipping_details.address.country
-                    profile.default_postcode = shipping_details.address.postal_code
-                    profile.default_town_or_city = shipping_details.address.city
-                    profile.default_street_address1 = shipping_details.address.line1
-                    profile.default_street_address2 = shipping_details.address.line2
+                    profile.default_postcode = (
+                        shipping_details.address.postal_code
+                    )
+                    profile.default_town_or_city = (
+                        shipping_details.address.city
+                    )
+                    profile.default_street_address1 = (
+                        shipping_details.address.line1
+                    )
+                    profile.default_street_address2 = (
+                        shipping_details.address.line2
+                    )
                     profile.default_county = shipping_details.address.state
                     profile.save()
             except UserProfile.DoesNotExist:
@@ -97,7 +106,11 @@ class StripeWH_Handler:
             try:
                 order = Order.objects.get(
                     full_name__iexact=shipping_details.name,
-                    email__iexact=billing_details.email if billing_details else metadata.email,
+                    email__iexact=(
+                        billing_details.email
+                        if billing_details
+                        else metadata.email
+                    ),
                     phone_number__iexact=shipping_details.phone,
                     country__iexact=shipping_details.address.country,
                     postcode__iexact=shipping_details.address.postal_code,
@@ -118,7 +131,10 @@ class StripeWH_Handler:
         if order_exists:
             self._send_confirmation_email(order)
             return HttpResponse(
-                content=f'✅ Webhook received: {event["type"]} | Order already exists in database',
+                content=(
+                    f'✅ Webhook received: {event["type"]} | Order already '
+                    'exists in database'
+                ),
                 status=200
             )
 
@@ -127,7 +143,11 @@ class StripeWH_Handler:
             order = Order.objects.create(
                 full_name=shipping_details.name,
                 user_profile=profile,
-                email=billing_details.email if billing_details else metadata.email,
+                email=(
+                    billing_details.email
+                    if billing_details
+                    else metadata.email
+                ),
                 phone_number=shipping_details.phone,
                 country=shipping_details.address.country,
                 postcode=shipping_details.address.postal_code,
@@ -164,14 +184,19 @@ class StripeWH_Handler:
             if order:
                 order.delete()
             return HttpResponse(
-                content=f'❌ Webhook received: {event["type"]} | ERROR: {e}',
+                content=(
+                    f'❌ Webhook received: {event["type"]} | ERROR: {e}'
+                ),
                 status=500
             )
 
         self._send_confirmation_email(order)
 
         return HttpResponse(
-            content=f'✅ Webhook received: {event["type"]} | Order successfully created',
+            content=(
+                f'✅ Webhook received: {event["type"]} | Order successfully '
+                'created'
+            ),
             status=200
         )
 

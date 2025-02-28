@@ -1,20 +1,20 @@
 document.addEventListener("DOMContentLoaded", function() {
-    console.log("✅ JavaScript Loaded!");
-
     // Select elements
     const reviewFormContainer = document.getElementById("review-form-container");
     const reviewForm = document.getElementById("review-form");
     const commentInput = document.getElementById("comment");
     const reviewIdInput = document.getElementById("review-id");
-    const submitButton = reviewForm.querySelector("button[type='submit']");
+    const submitButton = reviewForm ? reviewForm.querySelector("button[type='submit']") : null;
     const editButtons = document.querySelectorAll(".edit-review-btn");
     const deleteButtons = document.querySelectorAll(".delete-review-btn");
 
     // ✅ Ensure all form elements exist before running
     if (!reviewFormContainer || !reviewForm || !commentInput || !reviewIdInput || !submitButton) {
-        console.error("❌ ERROR: Missing form elements! JavaScript will not run.");
+        
         return;
     }
+
+    console.log("✅ All elements are found, script running!");
 
     // ✅ Automatically show the form if the user has NOT submitted any reviews
     if (!document.querySelector(".edit-review-btn")) {
@@ -38,39 +38,47 @@ document.addEventListener("DOMContentLoaded", function() {
         commentInput.focus();
     }
 
-    // ✅ Attach event listeners to all "Edit" buttons
-    editButtons.forEach(button => {
-        button.addEventListener("click", function() {
-            const reviewId = this.getAttribute("data-review-id");
-            const rating = this.getAttribute("data-rating");
-            const comment = this.getAttribute("data-comment");
+    // ✅ Attach event listeners to all "Edit" buttons if they exist
+    if (editButtons.length > 0) {
+        editButtons.forEach(button => {
+            button.addEventListener("click", function() {
+                const reviewId = this.getAttribute("data-review-id");
+                const rating = this.getAttribute("data-rating");
+                const comment = this.getAttribute("data-comment");
 
-            if (!reviewId || !rating || comment === null) {
-                console.error("❌ ERROR: Missing data attributes in Edit button!");
-                return;
-            }
+                if (!reviewId || !rating || comment === null) {
+                    console.error("❌ ERROR: Missing data attributes in Edit button!");
+                    return;
+                }
 
-            showReviewForm(reviewId, rating, comment);
+                showReviewForm(reviewId, rating, comment);
+            });
         });
-    });
+    } else {
+        console.log("⚠️ No Edit buttons found.");
+    }
 
     // ✅ Show form again after removing a review
-    deleteButtons.forEach(button => {
-        button.addEventListener("click", function() {
-            setTimeout(() => {
-                console.log("🗑️ Review Removed! Showing form for new review...");
+    if (deleteButtons.length > 0) {
+        deleteButtons.forEach(button => {
+            button.addEventListener("click", function() {
+                setTimeout(() => {
+                    console.log("🗑️ Review Removed! Showing form for new review...");
 
-                // ✅ Reset form for a new review
-                reviewForm.reset();
-                reviewIdInput.value = "";
-                submitButton.textContent = "Submit Review";
-                reviewFormContainer.style.display = "block"; // Show form for new review
-                commentInput.focus();
+                    // ✅ Reset form for a new review
+                    reviewForm.reset();
+                    reviewIdInput.value = "";
+                    submitButton.textContent = "Submit Review";
+                    reviewFormContainer.style.display = "block"; // Show form for new review
+                    commentInput.focus();
 
-                console.log("✅ Form is ready for new review!");
-            }, 500); // Delay to allow deletion to process
+                    console.log("✅ Form is ready for new review!");
+                }, 500); // Delay to allow deletion to process
+            });
         });
-    });
+    } else {
+        console.log("⚠️ No Delete buttons found.");
+    }
 
     // ✅ Hide the form after submission and clear fields
     reviewForm.addEventListener("submit", function(event) {

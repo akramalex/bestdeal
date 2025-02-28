@@ -104,7 +104,7 @@
                         {% if s %}
                             <div class="col-12">
                                 <p><strong>Size:</strong></p>
-                                <select class="form-control rounded-0 w-50" name="product_size" id='id_product_size'>
+                                <select class="form-control rounded-0 w-50" name="product_size" id='id_product_size' aria-label="Select Product Size">
                                     <option value="xs">XS</option>
                                     <option value="s">S</option>
                                     <option value="m" selected>M</option>
@@ -120,16 +120,19 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <button class="decrement-qty rorounded-0 btn btn-primary qty-btn"
-                                             data-item_id="{{ product.id }}" id="decrement-qty_{{ product.id }}">
+                                             data-item_id="{{ product.id }}" id="decrement-qty_{{ product.id }}"
+                                             aria-label="Decrease quantity for {{ product.name }}">
                                             <i class="fas fa-minus"></i>
                                         </button>
                                     </div>
                                     <input class="form-control qty_input" type="number" 
                                         name="quantity" value="1" min="1" max="99"
-                                        data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
+                                        data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}"
+                                        aria-label="Quantity for {{ product.name }}">
                                         <div class="input-group-append">
                                             <button class="increment-qty qty-btn btn btn-primary rounded-0 d-flex align-items-center justify-content-center"
-                                                 data-item_id="{{ product.id }}" id="increment-qty_{{ product.id }}" >
+                                                 data-item_id="{{ product.id }}" id="increment-qty_{{ product.id }}"
+                                                 aria-label="Increase quantity for {{ product.name }}" >
                                                 <i class="fas fa-plus"></i>
                                             </button>
                                         </div>

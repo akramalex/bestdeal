@@ -1,7 +1,7 @@
-from decimal import Decimal
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 from products.models import Product
+from decimal import Decimal
 
 
 def bag_contents(request):
@@ -27,7 +27,8 @@ def bag_contents(request):
 
             # ✅ Apply VAT only if product has `vat_applicable = True`
             if product.vat_applicable:
-                vat_total += line_total * Decimal(settings.VAT_PERCENTAGE / 100)
+                vat_total += (line_total *
+                              Decimal(settings.VAT_PERCENTAGE / 100))
 
             bag_items.append({
                 'item_id': item_id,
@@ -43,7 +44,7 @@ def bag_contents(request):
 
                 # ✅ Apply VAT only if `vat_applicable = True`
                 if product.vat_applicable:
-                    vat_total += (line_total * 
+                    vat_total += (line_total *
                                   Decimal(settings.VAT_PERCENTAGE / 100))
 
                 bag_items.append({
@@ -58,7 +59,7 @@ def bag_contents(request):
         delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
     else:
         delivery = Decimal('0.00')
-    # ✅ Grand Total = Order Total + VAT (only for VAT-applicable products) + Delivery
+
     grand_total = total + vat_total + delivery
 
     context = {

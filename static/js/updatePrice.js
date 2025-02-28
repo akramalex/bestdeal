@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("✅ JavaScript Loaded!");
+    
 
     const quantityInput = document.querySelector(".qty_input"); // Quantity input field
     const priceElement = document.querySelector(".lead.font-weight-bold.text-primary"); // Displayed price
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    console.log("✅ Elements found, script running!");
+    
 
     let basePrice = parseFloat(priceElement.textContent.replace("$", "").trim());
 
