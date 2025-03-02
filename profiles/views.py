@@ -19,7 +19,10 @@ def profile(request):
             form.save()
             messages.success(request, 'Profile updated successfully')
         else:
-            messages.error(request, 'Update failed. Please ensure the form is valid.')
+            messages.error(
+                request,
+                'Update failed. Please ensure the form is valid.'
+            )
     else:
         form = UserProfileForm(instance=profile)
 
@@ -68,8 +71,10 @@ def add_to_wishlist(request, product_id):
     else:
         messages.info(request, f'{product.name} is already in your wishlist.')
 
-    # ✅ Fix: Correctly redirect to the previous page or product detail page
-    return redirect(request.META.get('HTTP_REFERER', reverse('product_detail', args=[product_id])))
+    return redirect(
+        request.META.get('HTTP_REFERER',
+                         reverse('product_detail', args=[product_id]))
+    )
 
 
 @login_required
@@ -78,12 +83,18 @@ def remove_from_wishlist(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     profile = get_object_or_404(UserProfile, user=request.user)
 
-    wishlist_item = Wishlist.objects.filter(user=profile, product=product).first()
+    wishlist_item = Wishlist.objects.filter(
+        user=profile, product=product
+    ).first()
     if wishlist_item:
         wishlist_item.delete()
-        messages.success(request, f'Removed {product.name} from your wishlist!')
+        messages.success(
+            request,
+            f'Removed {product.name} from your wishlist!'
+        )
     else:
         messages.warning(request, 'This product is not in your wishlist.')
 
-    # ✅ Fix: Correctly redirect to the previous page or profile page
-    return redirect(request.META.get('HTTP_REFERER', reverse('profile')))
+    return redirect(
+        request.META.get('HTTP_REFERER', reverse('profile'))
+    )

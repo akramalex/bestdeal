@@ -209,6 +209,7 @@
                     <div class="form-group">
                         <label for="rating">Rating:</label>
                         <select class="form-control" id="rating" name="rating" required>
+                            <option value="" disabled>Select a rating</option> <!-- Placeholder -->
                             <option value="5" {% if user_review.rating == 5 %}selected{% endif %}>5 - Excellent</option>
                             <option value="4" {% if user_review.rating == 4 %}selected{% endif %}>4 - Good</option>
                             <option value="3" {% if user_review.rating == 3 %}selected{% endif %}>3 - Average</option>

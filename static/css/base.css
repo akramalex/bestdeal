@@ -313,7 +313,6 @@ button-container {
 }
 
 
-
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
@@ -322,8 +321,6 @@ button-container {
     max-width: 80%;
   }
 }
-
-
 
 
 /* fixed top navbar only on medium and up */
@@ -401,7 +398,6 @@ button-container {
     .just-ma {
         margin-top: 110px;
     }
-
    
 }
 
