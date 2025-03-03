@@ -386,3 +386,134 @@ The following features have been implemented:
 ![](static/images/nav4.jpg)
 ![](static/images/nav5.jpg)
 ![](static/images/nav6.jpg)
+
+
+### Homepage
+
+* The homepage consists of a large hero image that changes to different images. In total, there are four images, where the user is welcomed to the site and provided with a "Shop Now" button.
+
+
+
+* "The new collections are here," and the "Shop Now" button takes the user to the "All Products" page.
+
+* Below the hero section, there are 6 sections, each with an image and a category. Clicking on any section takes the customer to the specific category they're interested in.
+
+* Each category is displayed in a Bootstrap card, containing the category's name, and a featured image.
+
+* On smaller devices, the layout changes to one column per category to maximize usable screen space.
+
+
+![](static/images/ho1.jpg)
+![](static/images/ho2.jpg)
+![](static/images/ho3.jpg)
+![](static/images/ho4.jpg)
+![](static/images/ho5.jpg)
+
+
+### All products
+
+ * Each product can be clicked, bringing the user to the product details page for that specific product.
+
+- EEach product card contains the image, price, category, rating, and two buttons: "Add to Bag" and "Details." If the item has size options, the buttons will display "Choose Size" and "Details."
+
+- If the customer presses "Add to Bag," the item will be added to the shopping bag directly, with a notification confirming the action.
+
+-  If the customer presses "Details," they will be taken to the product details page for that specific item.
+
+
+- If the item has size options, both buttons, "Choose Size" and "Details," will take the customer to the product details page, where they can select the size before adding the item to the cart. 
+
+
+- To save the customer's time, there is an arrow in the bottom right corner of the page that allows the customer to quickly return to the top of the page at any time.
+
+![](static/images/prod1.jpg)
+![](static/images/prod2.jpg)
+
+
+### product details
+
+- The product details page consists of 4 sections.
+
+   * The first section displays the product image on the left-hand side.
+
+   * The second section on the left-hand side includes:
+
+       - Item title
+       - Price
+       - category
+       - rating
+       - Add to Wishlist (only for registered customer )
+       - edit| delete (only for superusers)
+       - Description
+       - Discount tiers (if available)
+       - Size options (if the item has sizes)
+       - Quantity input 
+       - Two buttons: "Add to Bag" and "Keep Shopping".
+
+   * The third section: Reviews and Rating Section:
+
+       - Registered users can rate the product, leave a review, and edit or delete their review if needed.
+
+       - Non-registered users can view reviews and ratings but will see a prompt encouraging them to log in to leave a review.
+
+    * The last section is "Rated Items You May Like" 
+      
+       - It appears at the end, showing several items to the customer. The items keep moving, and if the customer is interested in any of them, pressing "Add to Bag" or "Details" will take them to the product details page, ensuring the customer can read all the descriptions about the item.
+
+
+![](static/images/d1.jpg)
+![](static/images/d2.jpg)
+![](static/images/d3.jpg)
+![](static/images/d4.jpg)
+![](static/images/d5.jpg)
+![](static/images/d6.jpg)
+![](static/images/d7.jpg)
+![](static/images/d8.jpg)
+
+
+### Contact Page
+
+* The Contact page consists of a form that users can use to get in touch with best.
+
+* Front-end validation code ensures users must fill out all fields in order to submit the contact form.
+
+* Once the user submits a message, they are shown a confirmation message stating: "Thank you! Your message has been submitted successfully. We will get back to you shortly." Below the message, a button is provided to redirect users back to the homepage.
+
+
+
+* I also ensured that any required elements removed from the front-end trigger an error notifaction  "There was an error. Please try again."
+
+
+![](static/images/c1.jpg)
+![](static/images/c2.jpg)
+![](static/images/c3.jpg)
+
+
+### login, logout, register 
+
+
+* Users can register for an account by filling out the registration form.
+
+* This form is validated on the front end to ensure users submit the required information.
+
+* Password rules apply:
+  - Your password can’t be too similar to your other personal information.
+  - Your password must contain at least 8 characters.
+  - Your password can’t be a commonly used password.
+  - Your password can’t be entirely numeric.
+  - The password must be entered twice, and the two passwords must match.
+
+
+* Clicking the sign-up button will create a new user, and the user can then sign in and use the user functionality on the website.
+
+* Users can log in from the login page by entering the correct username and password.
+
+* Users can easily log out by clicking the logout button in the navigation bar.
+
+
+![](static/images/s1.jpg)
+![](static/images/s2.jpg)
+![](static/images/s3.jpg)
+![](static/images/s4.jpg)
+![](static/images/s5.jpg)
+
