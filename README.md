@@ -153,3 +153,236 @@ To help visualize a typical user journey around the site, I used [lucid.app](htt
 
 
 ![](static/images/sc-d.jpeg)
+#### User Stories:
+
+  - as developer..
+
+     *  i can create a new AWS S3 bucket so that I can store static files and images securely.
+
+     * i can create a Heroku app so that I can link to a virtually hosted PostgreSQL database for the deployed site.
+
+     *  i can set up my local coding environment so that I can develop securely and deploy without revealing sensitive information.
+
+     *  i can install Django and required libraries so that I can work with a PostgreSQL database and cloud-based images from my local development IDE.
+
+    
+    * i can create a GitHub repository so that I can store my project files online.
+
+
+
+
+
+
+ - as a admin / owner..
+
+    * i want to increase my search engine ranking so that  I can increase the number of visitors to my site
+
+
+    * i want to set up a social media page so that I can promote my business and products to the global market.
+
+    * i can send promotional emails so that I can promote new products and offers to my customers.
+
+    *  i can manually manage stock levels so that I can input received purchase orders and ensure that the stock levels are accurate in case of discrepancies or damages.
+
+    * i can delete a product so that I can remove products that are no longer for sale.
+
+    *  i can edit or update a product so that change product details.
+
+    *  i can add a product so that I can add new products to the store.
+
+
+
+
+
+- as a site user / shopper..
+
+   *   i can add and remove products from my wishlist so that I can easily keep track of the products I am interested in and purchase them later.
+
+   *  i can securely submit my payment details so that I can rest assured my financial information is safe.
+
+   *  i can access the checkout page so that I can review my order while entering my payment/shipping details.
+
+   * i can receive an email confirmation after checking out so that I can keep a record of my order.
+
+   *  i can view an order confirmation after checkout so that I can verify that I haven’t made any mistakes.
+
+   * i can adjust the quantity of individual items in my bag so that I can easily make changes to my bag.
+
+
+   * i can select a quantity of a product so that I can buy the required amount of the product.
+
+   * i can search for a product by name or content in the product description so that I can find a specific product I am looking for.
+
+   *  i can sort the list of available products so that I can view them in different orders and find the highest/lowest ratings or prices and sort alphabetically to aid in finding the most suitable products for my needs.
+
+   *  i can receive an email confirmation upon registration so that I can confirm the registration process worked correctly. 
+
+   * i can recover my password in case I forget it so that I can regain access to my account in the event I lose my password.
+
+   *  i can amend my personal details from my profile so that I can update information should there be any changes.
+
+   *  i can save my personal details to my profile from the checkout page so that I don’t have to enter them every time I make a purchase.
+
+   * i can easily log in or log out at any time so that I can access my personal account information and protect it from unauthorized viewing on shared devices.
+
+   *  i can register for an account so that I can save my personal details and view my order history online.
+
+   *  i can easily contact the store owner so that I can ask questions about products or the site.
+
+   *  i want to see a pleasantly styled and easy-to-navigate site so that I can enjoy the experience of shopping.
+
+   *  i can see clearly when something goes wrong on the site so that I can correct any errors and continue my purchase.
+
+   *  i can view reviews of a product so that I can see what others think.
+
+   *  i can leave a review so that share my opinion of a product and leave a star rating.
+
+   * i can view the total of my purchases at any time so that I can review how much I am spending whilst building an order.
+
+   *  i can view individual product details so that  identify the price, description, reviews, and product images to compare with other items.
+
+   * i want to view a list of products so that I can select some to purchase.
+
+
+   *  i want to clearly identify the site's purpose upon visiting so that I can determine if the site is what I am looking for.
+
+   * i can access a live URL so that I can use the site on any device.
+
+   ###### Acceptance Criteria
+   ![](static/images/userst.jpg)
+
+
+
+
+###  Skeleton
+
+  #### Wireframes:
+  The appearance of each page of the website was planned by making wireframes. It was essential to provide a positive user experience for the user.
+
+Initially, wireframes plans were hand-drawn on a notepad. More detailed wireframes were then created using a desktop version of [Balsamiq](https://balsamiq.cloud/). 
+They can be found below:
+
+ - home page
+
+![](static/images/wireframe1.jpg)
+
+- Products page
+
+![](static/images/wireframe2.jpg)
+
+- Product details page
+
+
+![](static/images/product1.jpg)
+
+- contact us  page
+
+
+![](static/images/contactw.jpg)
+
+
+- small screen
+
+![](static/images/phone-home.jpg)
+
+![](static/images/phone-footer.jpg)
+
+
+###  Database Design
+
+Entity Relationship Diagrams (ERDs) help to visualize database architecture before creating models. Understanding the relationships between different tables can save time later in the project. To follow best practices, a database schema was created for the backend DB and tables, and mapped out before coding began using a free version of [Lucidchart](https://lucid.app/).
+
+
+Below is the database structure:
+
+![](static/images/derd.jpeg)
+
+
+#### Surface
+
+#### Color Scheme: 
+
+
+I used the following image to generate the color scheme on [coolers](https://coolors.co/). The resultant color scheme is:
+
+
+![](static/images/sc-c1.jpg)
+
+##### Typography:
+
+
+ * Leckerli:
+
+     Used for: The brand name in the navbar and the text in the hero section, creating a clean, modern look
+.
+
+* lato:
+
+     Used for: Body text and general content, providing readability and clarity.
+
+
+## Features
+
+The following features have been implemented:
+
+* Fully responsive website consisting of:
+* Home
+* All products
+   - by Price
+   - by Rating
+   - By Category
+   - All Products
+* Clothing
+   - Activewear & Essentials
+   - jeans
+   - shirts
+   - All Clothing
+* Homeware
+    - bed & bath
+    - Kitchen & Dining
+    - All Homeware
+
+* Special Offers 
+
+   - New Arrivals
+   - Deals
+   - Clearance
+   - All Specials
+
+* Contact us 
+
+* My  Account 
+    -  Register
+    -  Login
+        * profile
+    
+* bag    
+* product Details - With CRUD functionality for logged-in users to add/remove from the wishlist, leave reviews and ratings. and for super administrators to edit/remove products.
+
+
+*  Admin - with CRUD functionality for logged in superadministrators
+
+
+### Site Navigation
+
+### Navbar
+
+* Featured at the top of the page, the navigation displays a burger menu. Next to it are the options for Search, My Account, and Bag.
+
+* The other navigation links that appear once the burger menu is opened are: Home, All Products, Clothing, Homeware, Special Offers, and Contact, each linking to different pages of the site.
+
+
+* When the user hovers over a link, the link appears in bold.
+
+* The navigation clearly displays the name of the company and website.
+
+* The navigation makes the different sections of information easy to find.
+
+* On smaller devices, the navigation converts to a burger menu.
+
+![](static/images/nav1.jpg)
+![](static/images/nav2.jpg)
+![](static/images/nav3.jpg)
+![](static/images/nav4.jpg)
+![](static/images/nav5.jpg)
+![](static/images/nav6.jpg)
