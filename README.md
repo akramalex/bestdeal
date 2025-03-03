@@ -1,131 +1,129 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# bestdeal 
+![](static/images/resp.jpg)
 
-Welcome Akram Ewida Ahmed Ewida,
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+## Welcome! 
+[View the live project here .](https://bestdeal-64124e15271c.herokuapp.com/)
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **June 18, 2024**
+[View GitHub repository .](https://github.com/akramalex/bestdeal)
 
-## Gitpod Reminders
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## Introduction
 
-`python3 -m http.server`
+Best Deal is an eCommerce platform designed to provide customers with easy access to a variety of products to buy. Our platform offers a wide range of products across categories like electronics, fashion, home goods, and more.
 
-A blue button should appear to click: _Make Public_,
+Visitors to the website can browse products, view detailed information, and make purchases with ease. The platform also provides a secure and seamless shopping experience, including features like product search, filtering options, and a simple checkout process.
 
-Another blue button should appear to click: _Open Browser_.
+Administrators have full CRUD capabilities to manage (add, edit, delete) products via a user-friendly admin interface. The admin panel also allows for inventory management and order tracking.
 
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
+To ensure a smooth customer experience, all orders undergo verification before being processed for delivery.
 
-A blue button should appear to click: _Make Public_,
+## UX
+  ### The Strategy
+  
+  #### Site  Aims
 
-Another blue button should appear to click: _Open Browser_.
+- Provide a Seamless Shopping Experience
+To allow customers to easily browse, select, and purchase products in a convenient and straightforward manner, ensuring an enjoyable shopping journey.
 
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+- Facilitate Product Discovery
+To provide detailed product descriptions, clear images, and customer reviews, enabling users to make informed purchase decisions.
 
-To log into the Heroku toolbelt CLI:
+- Ensure Secure Transactions
+To ensure customers feel confident while making purchases by offering a secure, streamlined checkout process with multiple payment options.
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+- Drive Customer Engagement
+To encourage repeat purchases by offering features like product reviews, ratings, wishlists, and personalized recommendations based on browsing history and preferences.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
+- Provide Exceptional Customer Support
+To offer real-time customer support through multiple channels like chat, email, or phone, addressing issues promptly and providing assistance throughout the customer’s journey.
 
-### Connecting your Mongo database
+- Offer a User-Friendly Platform
+To create an intuitive, easy-to-use shopping platform that is fully responsive and works seamlessly across different devices (mobile, tablet, desktop).
 
-- **Connect to Mongo CLI on a IDE**
-- navigate to your MongoDB Clusters Sandbox
-- click **"Connect"** button
-- select **"Connect with the MongoDB shell"**
-- select **"I have the mongo shell installed"**
-- choose **mongosh (2.0 or later)** for : **"Select your mongo shell version"**
-- choose option: **"Run your connection string in your command line"**
-- in the terminal, paste the copied code `mongo "mongodb+srv://<CLUSTER-NAME>.mongodb.net/<DBname>" --apiVersion 1 --username <USERNAME>`
-  - replace all `<angle-bracket>` keys with your own data
-- enter password _(will not echo **\*\*\*\*** on screen)_
+- Improve Visibility and Ranking on Search Engines
+To improve visibility and ranking on search engines like Google. Implement SEO best practices, ensuring the website is easily discoverable by users searching for related content.
 
-------
+#### Scope 
 
-## Release History
+Given the time and resource constraints, we will prioritize core features for the MVP (Minimum Viable Product). These features are categorized as Must-Have, Should-Have, and Won’t-Have for the initial release, and can be expanded in future phases.
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+#### UX Efforts Must Address These:
 
-**June 18, 2024,** Add Mongo back into template
+ 1- User Login & Authentication
 
-**June 14, 2024,** Temporarily remove Mongo until the key issue is resolved
+ * Users must be able to easily create an account and log in to the platform. The login and registration process should be smooth and secure, with options for password recovery.
 
-**May 28 2024:** Fix Mongo and Links installs
+ 2- Product Browsing & Searching
 
-**April 26 2024:** Update node version to 16
+ * Implement a seamless product browsing experience. Ensure that the search bar is prominent, and users can filter and sort products by categories, price,  rating, . This will help users find products quickly and efficiently.
 
-**September 20 2023:** Update Python version to 3.9.17.
+3- Product Page Design
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+ * Each product page should clearly display product details, such as name, description, price, reviews. High-quality images, videos, and size/color options should also be available in a user-friendly layout.
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+4- Seamless Shopping Cart Experience
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+ * Users should easily add items to their shopping cart and view the total cost, with options to update quantities, remove items.
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+ 5- Simplified Checkout Process
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+ * The checkout process should be simple and secure, offering  payment option (Stripe). Allow users to review their order before confirming the purchase.
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+ -6 Responsive Design for All Devices
+ * Ensure that the website is fully responsive and works seamlessly across mobile phones, tablets, and desktops. This is crucial for maintaining a consistent experience for all users, regardless of their device.   
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+ 7- Order Confirmation
+ * After a purchase is made, users should receive an email confirmation.
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+ 8 - User Reviews & Ratings 
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+ * Implement a product review system that allows customers to rate products and share feedback. This feature will help potential buyers make informed decisions and increase user engagement.
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+ 9 - Wishlist Feature
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+ * Provide users with the ability to add products to a wishlist. This helps users save products for future purchases and enhances their shopping experience by reminding them of items they’re interested in.
 
-------
+ 10 - Customer Support Access
 
-## FAQ about the uptime script
+ * Make customer support easily accessible through chat, email, or phone. Provide FAQs or a help center to assist with common queries. Fast response times are essential to maintaining customer satisfaction.
 
-**Why have you added this script?**
+ 11 - Simple and Intuitive Navigation
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+ * The navigation menu should be easy to understand and navigate. Categories and subcategories should be clearly defined, and users should be able to access all relevant pages, such as product listings, shopping cart, and user profile, with minimal effort.
 
-**How will this affect me?**
+ 12-  Security and Privacy
+ 
+ * Customers should feel confident when making transactions on the site. Use secure payment gateways and ensure that customer data is protected with SSL encryption. Also, display privacy policies clearly.
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+ 13 - Product Recommendations
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+ * Use data-driven algorithms to recommend products based on users' browsing history, past purchases, or popular items. These personalized suggestions can help increase sales and improve the overall user experience.
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+14 - SEO Optimization 
 
-**So….?**
+* Optimize the website for search engines to ensure that products are easily discoverable by users. Use proper metadata, image alt text, and structured data to improve the site's ranking in search results.
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
 
-**Can I opt out?**
+#### UX Efforts Should Accommodate These:
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+1- Product Excerpts on Homepage 
+* Display product previews, such as product names, prices, and images, on the homepage to give users an easy glimpse of what's available. Clicking on a preview should lead to the product detail page.
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+2- Contact Form 
+* Include a simple, easy-to-use contact form that allows users to reach out to administrators with inquiries, suggestions, or support requests. Ensure the form is visible and accessible, and provide a thank-you message after submission.
 
-**Anything more?**
+3- Guest Checkout Option
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+* Offer a guest checkout option for users who prefer not to create an account. However, encourage users to sign up for an account by offering benefits such as order tracking, wishlists, and faster future checkouts.
 
----
+4- Order History for Customers
 
-Happy coding!
+* Enable customers to easily view and track their order history, including past purchases and the status of current orders. Users should also be able to reorder items they previously bought.
+
+5- Advanced Filtering Options 
+
+* Allow users to filter products by a variety of parameters (e.g., price range, color, size, rating, and more). This will make it easier for users to find exactly what they are looking for.
