@@ -127,3 +127,29 @@ Given the time and resource constraints, we will prioritize core features for th
 5- Advanced Filtering Options 
 
 * Allow users to filter products by a variety of parameters (e.g., price range, color, size, rating, and more). This will make it easier for users to find exactly what they are looking for.
+
+#### Unwise Use of Time to Address There:
+
+1 - Promotions and Discounts Section
+* Create a dedicated section for promotions, deals, or discounts, easily accessible from the homepage. This section should be highlighted to encourage users to take advantage of special offers.  will be in time wise 
+
+2- FAQ Section 
+
+* Add a frequently asked questions (FAQ) section to help users find answers to common queries about products, returns, shipping, payment methods, etc.
+
+3- Stock Availability Alerts
+
+* Notify users if a product they are interested in is out of stock and offer the option to be alerted when it becomes available again. This feature can help increase sales when products are restocked.
+
+4 -Product Comparison Tool 
+
+* Allow users to compare similar products side-by-side, making it easier to choose between different options based on features, price, and ratings. 
+
+5- Basic Admin Analytics
+* Track basic metrics for the admin, such as the number of items added to the cart, purchases made, and product popularity. This data will help the admin understand the market and optimize the product offerings.
+
+### Structure
+To help visualize a typical user journey around the site, I used [lucid.app](https://lucid.app/) to plan out the various routes. Unfortunately, due to the limitations of the free version of the tool, I am unable to provide a more detailed picture of the user journey. However, the flow provides a clear representation of how users would typically navigate through the platform.
+
+
+![](static/images/sc-d.jpeg)
