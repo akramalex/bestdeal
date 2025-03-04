@@ -517,3 +517,115 @@ The following features have been implemented:
 ![](static/images/s4.jpg)
 ![](static/images/s5.jpg)
 
+
+### My Profile
+
+
+- My Profile Page is a simple profile page with the following sections:
+
+   * Profile Update Form: 
+
+      - Allows users to update their information, including full name, phone number, street address 1, street address 2, town or city, county, postal code, and country.
+
+   * Order History :
+      - Shows the customer’s order history, displaying the order number, date of order, item titles, and order total.
+
+   * Wishlist:
+     
+     - Displays the products the customer has added to their wishlist. It includes the item image and two buttons: "Remove from Wishlist" or "Details," which take the customer to the product details page.
+
+
+  
+![](static/images/profile1.jpg)
+![](static/images/profile2.jpg)
+
+
+### Product Management
+
+- Product Management Page allows superuser to add or edit products:
+
+  * Add Product:
+
+     -  Once you open the product management page, a form will appear to add a product by filling in the category, SKU, name, description, size (if applicable), price, rating, image URL, and VAT applicability.
+
+     - If the item is added correctly, you will receive a notification stating the item was added. If something is wrong, an error notification will appear.
+
+
+
+
+  * Edit Product:
+
+     - To edit a product, press on any product page and click "Edit." This will open the product management page.
+
+     - If the update is successful, you will receive a notification stating the update was successful. If not, a failed notification will appear.
+
+
+![](static/images/pm-1.jpg)
+![](static/images/pm-2.jpg)
+![](static/images/pm-3.jpg)
+![](static/images/pm-4.jpg)
+![](static/images/pm-5.jpg)
+![](static/images/pm-6.jpg)
+![](static/images/pm-7.jpg)
+![](static/images/pm-8.jpg)
+![](static/images/pm-9.jpg)
+
+### bag 
+
+-  If the bag is empty, the page will inform the customer that their bag is empty, with a button labeled "Keep Shopping" that takes them to the product page.
+
+ - If the bag contains items, it will display the product information: name, size (if applicable), and SKU. On the other side, the item price and quantity will be shown, with the ability to increase or decrease the quantity or remove the item from the page. At the bottom, the bag total will be displayed, including the delivery cost (which is $0 if the order is over $50), VAT (if applicable), and the grand total. Two buttons will be provided: "Keep Shopping" (which takes the customer to the all products page) or "Secure Checkout" (which takes the customer to the checkout page).
+
+
+![](static/images/bag1.jpg)
+![](static/images/bag2.jpg)
+![](static/images/bag3.jpg)
+
+
+### Checkout
+
+ * The first section is the order summary, showing the item image, title, size, quantity, and a link to the product details page. Below it, the subtotal is displayed, followed by the order total, delivery cost, VAT, and the grand total.
+
+* The second section is the "Complete Your Order" form, which includes the customer’s details and delivery address. If the customer’s information is already saved, it will be displayed automatically. If not, there will be a button to save the delivery info. At the end, the payment card details will be required, with two buttons: one to complete the order and another to adjust the bag.
+
+* In the payment process, if the card is invalid or any required fields are not completed, an error message will be shown, indicating the issue (e.g., "Invalid card" or "Please complete all required fields").
+
+* When the payment process is ongoing, an overlay will appear on the screen to indicate that the payment is being processed.
+
+![](static/images/check.jpg)
+![](static/images/check2.jpg)
+![](static/images/check3.jpg)
+![](static/images/check1.jpg)
+![](static/images/check4.jpg)
+![](static/images/check5.jpg)
+
+
+##### Checkout success
+
+ - Once the payment is done, the user will be redirected to the checkout success page with a message on top: "Your order has been successfully placed. A confirmation email has been sent to (customer email address)."
+
+ - The checkout success page has two sections:
+     * Order Summary: Displays the item title (with a link to the product details page), size, quantity, subtotal, order total, delivery cost, VAT, and the grand total.
+     * Order Info: Shows the order number, date, item name, delivery address, and billing information.
+
+ 
+
+ - At the end, there's a message thanking the customer for shopping with us, along with two buttons:
+
+   * Back to Profile (for registered users).
+
+   * Check out the latest deals.
+
+
+![](static/images/check6.jpg)
+![](static/images/check7.jpg)
+![](static/images/check8.jpg)
+
+
+ 
+
+
+
+
+
+

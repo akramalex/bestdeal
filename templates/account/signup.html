@@ -1,6 +1,5 @@
 {% extends "account/base_entrance.html" %}
-{% load allauth i18n %}
-{% load crispy_forms_tags %}
+{% load i18n %}
 
 {% block head_title %}
 {% trans "Sign Up" %}
@@ -13,73 +12,85 @@
 
 <div class="container">
     <div class="col-12 col-md-8 col-lg-6 mx-auto">
-        <p class="text-muted text-center">
-            {% trans "Already have an account?" %}
-            <a href="{{ login_url }}" class="text-info">{% trans "Sign in here" %}</a>.
-        </p>
-
-        {% if not SOCIALACCOUNT_ONLY %}
-            <form method="post" action="{% url 'account_signup' %}">
-                {% csrf_token %}
-                
-                {% for field in form %}
-                    <div class="form-group">
-                        {{ field.label_tag }}
-                        {% if field.name == 'password1' %}
-                            <input 
-                                type="password" 
-                                name="{{ field.name }}" 
-                                id="{{ field.id_for_label }}" 
-                                class="form-control" 
-                                required
-                            >
-                            <small class="form-text text-muted">
-                                • Your password can't be too similar to your other personal information.<br>
-                                • Your password must contain at least 8 characters.<br>
-                                • Your password can't be a commonly used password.<br>
-                                • Your password can't be entirely numeric.
-                            </small>
-                        {% elif field.name == 'password2' %}
-                            <input 
-                                type="password" 
-                                name="{{ field.name }}" 
-                                id="{{ field.id_for_label }}" 
-                                class="form-control" 
-                                required
-                            >
-                        {% else %}
-                            <input 
-                                type="{{ field.field.widget.input_type }}"
-                                name="{{ field.name }}" 
-                                id="{{ field.id_for_label }}" 
-                                class="form-control" 
-                                {% if field.field.required %}required{% endif %}
-                            >
-                        {% endif %}
-                        {% if field.errors %}
-                            <div class="text-danger">
-                                {% for error in field.errors %}
-                                    {{ error }}
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                    </div>
-                {% endfor %}
-
-                <div class="row mt-3">
-                    <div class="col-6">
-                        <a class="btn btn-outline-dark w-100 rounded-0 text-uppercase" href="{% url 'home' %}">
-                            <i class="fas fa-home"></i> Home
-                        </a>
-                    </div>
-                    <div class="col-6">
-                        <button class="btn btn-dark w-100 rounded-0 text-uppercase" type="submit">
-                            <i class="fas fa-sign-in-alt"></i> {% trans "Sign Up" %}
-                        </button>
-                    </div>
+       
+           
+            <p class="text-muted text-center">
+                {% trans "Already have an account?" %}
+                <a href="{{ login_url }}" class="text-info">{% trans "Sign in here" %}</a>.
+            </p>
+    
+        <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+            {% csrf_token %}
+            
+            {% if form.errors %}
+                <div class="alert alert-danger">
+                    <ul>
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
                 </div>
-            </form>
-        {% endif %}
+            {% endif %}
+            
+            {% for field in form %}
+                <div class="form-group">
+                    {{ field.label_tag }}
+                    {% if field.name == 'password1' %}
+                        <input 
+                            type="password" 
+                            name="{{ field.name }}" 
+                            id="{{ field.id_for_label }}" 
+                            class="form-control" 
+                            required
+                        >
+                        <small class="form-text text-muted">
+                            • Your password can't be too similar to your other personal information.<br>
+                            • Your password must contain at least 8 characters.<br>
+                            • Your password can't be a commonly used password.<br>
+                            • Your password can't be entirely numeric.
+                        </small>
+                    {% elif field.name == 'password2' %}
+                        <input 
+                            type="password" 
+                            name="{{ field.name }}" 
+                            id="{{ field.id_for_label }}" 
+                            class="form-control" 
+                            required
+                        >
+                    {% else %}
+                        <input 
+                            type="{{ field.field.widget.input_type }}"
+                            name="{{ field.name }}" 
+                            id="{{ field.id_for_label }}" 
+                            class="form-control" 
+                            {% if field.field.required %}required{% endif %}
+                        >
+                    {% endif %}
+                    {% if field.errors %}
+                        <div class="text-danger">
+                            {% for error in field.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <div class="row mt-3">
+                <div class="col-6">
+                    <a class="btn btn-outline-dark w-100 rounded-0 text-uppercase" href="{% url 'home' %}">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                </div>
+                <div class="col-6">
+                    <button class="btn btn-dark w-100 rounded-0 text-uppercase" type="submit">
+                        <i class="fas fa-sign-in-alt"></i> {% trans "Sign Up" %}
+                    </button>
+                </div>
+            </div>
+        </form>
 
         {% if SOCIALACCOUNT_ENABLED %}
             <div class="text-center mt-4">
