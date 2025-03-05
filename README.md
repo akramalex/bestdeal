@@ -622,10 +622,113 @@ The following features have been implemented:
 ![](static/images/check8.jpg)
 
 
+
+### Footer
+
+* The footer contains social media links to the Facebook page and a subscription form where customers can enter their email to subscribe to the monthly newsletter.
+
+* It also includes links to the contact page and privacy policy. Additionally, there is a link for the Terms of Service related to Future Features/Improvements, which is not yet linked to anything at the moment.
+
+![](static/images/ft1.jpg)
+![](static/images/ft2.jpg)
+![](static/images/ft3.jpg)
  
 
 
 
+## Future Features/Improvements
+
+ * Discount Tiers (Partially Done)
+
+   - Ability to apply a discount on certain quantities, where the price changes to the new discounted price once the quantity threshold is reached.
 
 
+* Notify Me
 
+  - Add a button on the product details page for out-of-stock items, allowing customers to be notified when the item is back in stock.
+
+
+* Out of Stock Alert
+
+  - Send an alert to the admin when an item goes out of stock. Additionally, send a weekly report to the superuser with a list of products that are out of stock.
+
+
+## Agile Development Process
+
+[GitHub Projects](https://github.com/users/akramalex/projects/14) served as an 
+Agile tool for this project.
+ ### Summary:
+  - EPIC 1: Set up and Deployment
+  - EPIC 2: Viewing and Navigation
+  - EPIC 3: Registration and User Accounts
+  - EPIC 4: Sorting and Searching
+  - EPIC 5: Purchasing and Checkout
+  - EPIC 6: Admin and Store Management
+  - EPIC 7: Marketing
+ ####  Milestones and Sprints
+In this project, milestones are used solely to track the completion and progress of sprints. Each sprint has a predefined set of user stories or tasks to be completed within the sprint period. The milestone is used to mark the completion of each sprint, ensuring that all objectives for that sprint are met.
+ - The dietDive project was managed from the beginning using GitHub Projects (View Project Here), in order to ensure an agile approach.
+
+ - The project goals were broken into Epics, each further divided into User Stories.
+ ![](static/images/ag1.jpg)
+ ![](static/images/ag2.jpg)
+ ![](static/images/ag3.jpg)
+ ![](static/images/ag4.jpg)
+ ![](static/images/ag5.jpg)
+
+
+ ### MoSCoW Prioritisation
+I've decomposed my Epics into stories prior to prioritizing and implementing them. Using this approach, I was able to apply the MoSCow prioritization and labels to my user stories within the Issues tab.
+
+ * Must Do: Must be done to complete the project.
+
+
+ * Must Have: guaranteed to be delivered
+
+ * Should Have: adds significant value, but not vital
+
+ * Could Have: has small impact if left out
+
+![](static/images/ag3.jpg)
+![](static/images/ag4.jpg)
+![](static/images/ag5.jpg)
+
+
+## Technologies used
+
+
+* Python
+
+   - he packages installed for the is project can be found in the [requirements.txt](https://github.com/akramalex/bestdeal/blob/main/requirements.txt)
+* Django
+  - Django was used as the python framework in the project.
+  - Django all auth was used to handle user authentication and related tasks i.e. sign in, sign up, sign out.
+
+
+* Heroku
+  - Used to deploy the page and make it publicly available.
+
+
+* [dbs](https://dbs.ci-dbs.net/)
+   - Used for the database during development and in deployment.
+
+
+* HTML
+  - HTML was the base language used to layout the skeleton of all templates.
+* CSS
+   - Custom CSS used to style the page and make the appearance look a little 
+  more unique.
+
+* Javascript
+  - I have used Javascript throughout to handle comments , edit and delete 
+
+
+* Bootstrap 5.1.3
+  - Used to style HTML, CSS, minor javascript. The more I used this framework the most I realized retrospectively how it could have saved me writing several parts of the code I had already written.
+
+* Font awesome
+  - All icons throughout the page.
+
+* Favicon
+
+   - The favicon is used to enhance the branding and user experience by providing a recognizable icon in the browser tab, making it easier for users to identify the website when multiple tabs are open.
