@@ -732,3 +732,163 @@ I've decomposed my Epics into stories prior to prioritizing and implementing the
 * Favicon
 
    - The favicon is used to enhance the branding and user experience by providing a recognizable icon in the browser tab, making it easier for users to identify the website when multiple tabs are open.
+
+
+## Testing 
+I have included testing details during and post-development in a separate document called [TESTING.md](https://github.com/akramalex/bestdeal/blob/main/TESTING.md).
+
+
+## Deployment 
+
+
+
+
+The live deployed application can be found at [Heroku](https://id.heroku.com/login).
+
+
+ ### dbs Database
+
+This project uses [dbs](https://dbs.ci-dbs.net/) for the PostgreSQL Database.
+
+1: Provide  Email Address#
+2: Create  PostgreSQL Database
+3: Get the Database URL
+
+### amazon
+This project uses the [aws.amazon](https://aws.amazon.com/console/) to store media assets online, as Heroku does not persist this type of data.
+
+To obtain your own amazon s3 , create an account and log in.
+
+  - AWS_STORAGE_BUCKET_NAME = '#'
+  - AWS_S3_REGION_NAME = '#'
+  -  AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+  - AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+  -  AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+
+###  Heroku Deployment
+
+This project uses [Heroku](https://id.heroku.com/login)
+, a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.
+
+Deployment steps are as follows, after account setup:
+
+ * Select New in the top-right corner of your Heroku Dashboard, and select Create new app from the dropdown menu.
+* Your app name must be unique, and then choose a region closest to you (EU or USA), and finally, select Create App.
+* From the new app Settings, click Reveal Config Vars, and set your environment variables.
+
+
+
+
+Heroku needs two additional files in order to deploy properly.
+
+* requirements.txt
+* Procfile
+
+
+You can install this project's requirements (where applicable) using:
+
+ * pip3 install -r requirements.txt
+ If you have your own packages that have been installed, then the requirements file needs updated using:
+
+ * pip3 freeze --local > requirements.txt
+The Procfile can be created with the following command:
+
+ * echo web: gunicorn app_name.wsgi > Procfile
+ * replace app_name with the name of your primary Django app name; the folder where settings.py is located
+
+ * keys to add in heroku 
+     - AWS_ACCESS_KEY_ID  
+     - AWS_SECRET_ACCESS_KEY
+     - DATABASE_url
+     - EMAIL_HOST_PASS
+     - EMAIL_HOST_USER
+     - SECRET_KEY
+     - STRIPE_PUBLIC_KEY  (stripe)
+     - STRIPE_SECRET_KEY  (stripe)
+     - STRIPE_WH_SECRET  (stripe)
+     - USE_AWS
+
+For Heroku deployment, follow these steps to connect your own GitHub repository to the newly created app:
+
+Either:
+
+ * Select Automatic Deployment from the Heroku app.
+Or:
+
+ * In the Terminal/CLI, connect to Heroku using this command: heroku login -i
+ * Set the remote for Heroku: heroku git:remote -a app_name (replace app_name with your app name)
+* After performing the standard Git add, commit, and push to GitHub, you can now type:
+    - git push heroku main
+    
+The project should now be connected and deployed to Heroku!
+
+
+### Local Deployment 
+
+This project can be cloned or forked in order to make a local copy on your own system.
+
+For either method, you will need to install any applicable packages found within the requirements.txt file.
+
+You will need to create a new file called env.py at the root-level, and include the same environment variables listed above from the Heroku deployment steps.
+
+Sample env.py file:
+
+import os
+
+os.environ.setdefault('STRIPE_PUBLIC_KEY', '#')
+os.environ.setdefault('STRIPE_SECRET_KEY', '#')
+os.environ.setdefault('STRIPE_CURRENCY', '#')
+os.environ.setdefault('STRIPE_WH_SECRET', '#')
+os.environ.setdefault('SECRET_KEY', '#')
+os.environ.setdefault('DEVELOPMENT', '#')
+
+
+    
+ local environment only (do not include these in production/deployment!)
+Setting.py("DEBUG", 'DEVELOPMENT' in os.environ)
+
+
+Once the project is cloned or forked, in order to run it locally, you'll need to follow these steps: 
+
+
+- Start the Django app: python3 manage.py runserver
+- Stop the app once it's loaded: CTRL+C or ⌘+C (Mac)
+- Make any necessary migrations: python3 manage.py makemigrations
+- Migrate the data to the database: python3 manage.py migrate
+- Create a superuser: python3 manage.py createsuperuser
+- Load fixtures (if applicable): python3 manage.py loaddata file-name.json (repeat for each file)
+- Everything should be ready now, so run the Django app again: python3 manage.py runserver
+
+
+ ## Credits
+
+
+   - [Balsamiq](https://balsamiq.cloud/) was used to create the wireframes.
+   - The site was developed using [Gitpod](https://codeinstitute-ide.net/).
+   - [GitHub](https://github.com/) was used to store my repository.
+   - Responsive screenshot made using [Amiresponsive](https://amiresponsive.co.uk/).
+   - Database used [dbs](https://dbs.ci-dbs.net/).
+
+  - [coolers.co](https://coolors.co/603f3f-a0acca-e4b67c-de9f13-000000) was used to generate color scheme.
+  - [W3cschools](https://www.w3schools.com/) was used to source the majority of the code used to create a timeline in CSS for the insights page. Minor styling adjustments were made and the HTML was adapted to include a Jinja for loop to display the relevant data without code repetition.
+
+  - [lucid.app](https://lucid.app/) was used to create Database Schema.
+
+ - Fonts were taken from [Google Fonts](https://fonts.google.com/).
+
+ - [favicon.io](https://favicon.io/) was used to create favicon.
+
+ - Bootstrap was used to enhance the styling and provide responsive, mobile-first design with pre-built CSS components.
+
+ -   AWS is used to store static and media files. You can access it through the [AWS Console](https://aws.amazon.com/console/). 
+
+  ### Content
+  
+  * The information about diets has been sourced from [kaggle.com](https://www.kaggle.com/)
+
+### Media
+
+* The images were sourced from [ Pexels ](https://www.pexels.com/)
+
+
